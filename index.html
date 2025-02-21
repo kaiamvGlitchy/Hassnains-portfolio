@@ -1,412 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Kai's Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #ffe4c4;
-      margin: 0;
-      padding: 0;
-      color: #3e2a47;
-      scroll-behavior: smooth;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Posts</title>
+    <!-- Back button -->
+<button class="back-button" onclick="window.history.back();">✖</button>
+
+<style>
+    .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: transparent;
+        color: white;
+        font-size: 30px;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 10;
+        
+        opacity: 0; /* Start hidden */
+        animation: fadeIn 1s ease-out forwards; /* Apply fade-in animation */
     }
 
-    /* Main container */
-    #main-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      opacity: 0;
-      animation: fadeIn 1.5s forwards;
+    .back-button:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
     }
 
-    header {
-      background-color: #3e2a47;
-      width: 100%;
-      padding: 10px 0;
-      text-align: center;
-      color: white;
-      opacity: 0;
-      animation: fadeIn 1s 0.5s forwards, slideInFromTop 1s forwards;
-    }
-
-    .logo {
-      font-size: 2em;
-      font-weight: bold;
-    }
-
-    nav ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    nav ul li {
-      display: inline;
-      margin: 0 15px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: white;
-      font-size: 1.2em;
-    }
-
-    /* About Me Section */
-    #about {
-      text-align: center;
-      margin: 40px 0;
-      opacity: 0;
-      animation: fadeIn 1s 1s forwards, slideInFromBottom 1s forwards;
-    }
-
-    .about-info {
-      background-color: #c6a97f;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      font-size: 1.2em;
-      color: #3e2a47;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .about-info h2 {
-      font-size: 1.5em;
-      margin-bottom: 10px;
-      color: #3e2a47;
-    }
-
-    .about-info p {
-      margin: 10px 0;
-    }
-
-    /* Skills Section */
-    #skills {
-      background-color: #e6d7b9;
-      padding: 20px;
-      border-radius: 10px;
-      margin: 40px 0;
-      opacity: 0;
-      animation: fadeIn 1s 2s forwards, slideInFromBottom 1s forwards;
-    }
-
-    /* Future Goals Section */
-    #future-goals {
-      background-color: #e6d7b9;
-      padding: 20px;
-      border-radius: 10px;
-      margin: 40px 0;
-      opacity: 0;
-      animation: fadeIn 1s 3s forwards, slideInFromBottom 1s forwards;
-    }
-
-    #future-goals h2 {
-      font-size: 1.5em;
-      margin-bottom: 20px;
-    }
-
-    #future-goals ul {
-      list-style-type: disc;
-      padding-left: 20px;
-    }
-
-    #future-goals li {
-      font-size: 1.2em;
-      color: #3e2a47;
-    }
-
-    /* Button Styling */
-    .popup-btn {
-      background-color: #3e2a47;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      cursor: pointer;
-      font-size: 1.2em;
-      border-radius: 5px;
-      transition: background-color 0.3s, transform 0.3s;
-    }
-
-    .popup-btn:hover {
-      background-color: #2d1c35;
-      transform: scale(1.1);
-    }
-
-    /* Social Media Icons */
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .social-icons a {
-      font-size: 2em;
-      color: #3e2a47;
-      transition: color 0.3s;
-    }
-
-    .social-icons a:hover {
-      color: burlywood;
-    }
-
-    .social-icons .youtube {
-      color: burlywood;
-    }
-
-    .social-icons .discord {
-      color: burlywood;
-    }
-
-    .social-icons .fiverr {
-      color: burlywood;
-    }
-
-    /* Quote Section */
-    .quote-container {
-      width: 90%;
-      max-width: 800px;
-      margin-top: 60px;
-      padding: 20px;
-    }
-
-    .quote-box {
-      background-color: #c6a97f;
-      padding: 20px;
-      border-radius: 10px;
-      font-size: 1.5em;
-      margin-bottom: 40px;
-      opacity: 0;
-      transform: translateX(-50px);
-      animation: slideInFromLeft 1s forwards;
-    }
-
-    /* Animation Keyframes */
+    /* Keyframes for fade-in effect */
     @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
+</style>
 
-    @keyframes slideInFromTop {
-      0% { opacity: 0; transform: translateY(-50px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #121212;
+            color: white;
+        }
 
-    @keyframes slideInFromBottom {
-      0% { opacity: 0; transform: translateY(50px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+        h1 {
+            font-size: 36px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
 
-    @keyframes slideInFromLeft {
-      0% { opacity: 0; transform: translateX(-50px); }
-      100% { opacity: 1; transform: translateX(0); }
-    }
+        .post {
+            background: #2d4054;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 60%;
+            min-width: 300px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            transition: transform 0.3s ease-in-out;
+        }
 
-    /* Scroll-triggered Quote Section */
-    .quote-box {
-      display: none;
-      opacity: 0;
-    }
+        .post:hover {
+            transform: scale(1.02);
+        }
 
-    .quote-box.visible {
-      display: block;
-      opacity: 1;
-      animation: slideInFromLeft 1s forwards;
-    }
+        .date {
+            font-size: 20px;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
 
-    /* Credits Section */
-    #credits {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 1.2em;
-      color: #3e2a47;
-      cursor: pointer;
-    }
+        .content {
+            font-size: 30px;
+            font-weight: bold;
+        }
 
-    #credits-details {
-      display: none;
-      font-size: 1em;
-      color: #3e2a47;
-      background-color: #f2e6d9;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 5px;
-    }
-
-    /* Responsive Design for iPad */
-    @media (min-width: 768px) and (max-width: 1024px) {
-      .logo {
-        font-size: 1.8em;
-      }
-
-      nav ul li {
-        margin: 0 10px;
-      }
-
-      .about-info, .skills, .future-goals {
-        padding: 15px;
-      }
-
-      .quote-box {
-        font-size: 1.3em;
-      }
-
-      .social-icons a {
-        font-size: 1.8em;
-      }
-    }
-
-    /* Mobile Design */
-    @media (max-width: 767px) {
-      body {
-        padding: 10px;
-      }
-
-      header {
-        padding: 15px 0;
-      }
-
-      .logo {
-        font-size: 1.5em;
-      }
-
-      nav ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0;
-      }
-
-      nav ul li {
-        margin: 10px 0;
-      }
-
-      .about-info, .skills, .future-goals {
-        padding: 10px;
-      }
-
-      .quote-box {
-        font-size: 1.2em;
-        padding: 15px;
-      }
-
-      .social-icons {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .social-icons a {
-        font-size: 1.6em;
-      }
-
-      #credits {
-        font-size: 1em;
-      }
-    }
-  </style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-  <div id="main-container">
-    <header>
-      <div class="logo">Kai's Portfolio</div>
-      <nav>
-        <ul>
-          <li><a href="#about">About Me</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#future-goals">Future Goals</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
 
-    <!-- About Me Section -->
-    <section id="about">
-      <div class="about-info">
-        <h2>About Me</h2>
-        <p><strong>Favorite Food:</strong> Alfredo</p>
-        <p><strong>Hobby:</strong> Editing Videos</p>
-        <p><strong>Favorite Animal:</strong> cat </p>
-        <p><strong>Favorite Color:</strong> Green</p>
-        <p><strong>Experience:</strong> 3 years of experience in video editing and content creation. I specialize in AMVs and gaming montages.</p>
-        <p><strong>Software I Use:</strong> CapCut (moving to After Effects soon!)</p>
-        <button class="popup-btn" onclick="openPopup()">if a man cries hes not weak hes just been strong for too long </button>
-      </div>
-    </section>
+    <h1>Community Posts</h1>
 
-    <!-- Skills Section -->
-    <section id="skills">
-      <h2>My Skills</h2>
-      <ul>
-        <li><strong>CapCut:</strong> 3 years of experience in editing and creating stunning AMVs and montages.</li>
-        <li><strong>GFX Design:</strong> 3 months of experience in graphic designing using Ibis Paint for creative graphics.</li>
-        <li><strong>Future Skills:</strong> I am currently learning After Effects to enhance my editing capabilities and open new creative doors.</li>
-      </ul>
-    </section>
-
-    <!-- Future Goals Section -->
-    <section id="future-goals">
-      <h2>My Future Goals</h2>
-      <ul>
-        <li>Learn advanced animation techniques and integrate them into my edits and videos.</li>
-        <li>Get better at After Effects and improve the quality of my AMVs and montages.</li>
-        <li>Explore the world of 3D animation and start creating immersive and visually stunning pieces.</li>
-        <li>Work with other talented creators to collaborate on exciting projects and expand my network in the industry.</li>
-        <li>Learn more about design and IT to combine creativity with technology, and potentially work in the tech/design industry.</li>
-      </ul>
-    </section>
-
-    <!-- Quotes Section -->
-    <section id="quote-section">
-      <div class="quote-container">
-        <div class="quote-box" id="quote1">"Kai is built different."</div>
-        <div class="quote-box" id="quote2">"Never back down, never give up."</div>
-        <div class="quote-box" id="quote3">"If a man cries, he's not weak; he's just been strong for too long."</div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <p>Email: yournightmaregoterupted@gamil.com</p>
-      <p>Social Media Links:</p>
-      <div class="social-icons">
-        <a href="https://www.youtube.com/@kaieditzamv" class="youtube" target="_blank">YouTube</a>
-        <a href="https://discord.com/channels/1291077149402333238/@home" class="discord" target="_blank">Discord</a>
-        <a href="https://www.fiverr.com/larry_987/make-you-an-amv-capcut-edit?utm_medium=shared&utm_source=copy&utm_campaign=gig&utm_term=yvmq8W6" class="fiverr" target="_blank">Fiverr</a>
-      </div>
-    </section>
-
-    <!-- Credits Section -->
-    <div id="credits">
-      <span>made by kai</span>
-      <div id="credits-details">
-        <p>Made by Kai</p>
-      </div>
+    <div class="post">
+        <p class="date">February 21, 2025</p>
+        <img class="image" src="kaicoding.jpg" alt="Post Image" width="200" height="200">
+        <p class="content">Finally learning coding! 🚀🔥</p>
     </div>
-  </div>
-
-  <script>
-    // JavaScript for quote visibility based on scroll
-    window.onscroll = function () {
-      var quote1 = document.getElementById("quote1");
-      var quote2 = document.getElementById("quote2");
-      var quote3 = document.getElementById("quote3");
-
-      // Trigger quote display based on scroll position
-      if (window.scrollY > 800) {
-        quote1.classList.add("visible");
-      }
-      if (window.scrollY > 1200) {
-        quote2.classList.add("visible");
-      }
-      if (window.scrollY > 1600) {
-        quote3.classList.add("visible");
-      }
-    };
-  </script>
 </body>
+</html>
