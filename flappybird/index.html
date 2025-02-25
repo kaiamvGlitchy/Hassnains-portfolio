@@ -134,7 +134,7 @@
         let move_speed = 3;
 
         // Gravity constant value
-        let gravity = 0.2;
+        let gravity = 0.14;
 
         // Bird speed and position
         let bird_dy = 0;
@@ -160,7 +160,7 @@
 
             // Bird jump when ArrowUp or Space is pressed
             if ((e.key == 'ArrowUp' || e.key == ' ') && game_state == 'Play') {
-                bird_dy = -2.5;  // Very small jump force
+                bird_dy = -2.2;  // Very small jump force
             }
         });
 
