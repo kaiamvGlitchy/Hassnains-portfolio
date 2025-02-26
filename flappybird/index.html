@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flappy Bird</title>
+    <title>Flappy Bird Game</title>
+
+    <!-- Link to Google Fonts for Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
         }
 
         body {
             height: 100vh;
             width: 100vw;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #87CEEB;
+            font-family: 'Roboto', sans-serif;
         }
 
         .background {
             height: 100vh;
             width: 100vw;
-            background: url('bg.jpg') no-repeat center center/cover;
             position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url('bg.jpg');
+            background-size: cover;
+            background-position: center;
         }
 
         .bird {
-            height: 80px; /* Smaller bird */
+            height: 80px;
             width: 120px;
             position: fixed;
             top: 40vh;
@@ -37,204 +50,228 @@
         .pipe_sprite {
             position: fixed;
             width: 6vw;
-            background: url('pipe.png') no-repeat center center/cover;
-            border-radius: 20px; /* Curved pipes */
+            background-color: green;
+            border-radius: 20px;
+        }
+
+        .pipe_top {
+            height: 70vh;
+            border-top-left-radius: 50% 50%;
+            border-top-right-radius: 50% 50%;
+        }
+
+        .pipe_bottom {
+            height: 70vh;
+            border-bottom-left-radius: 50% 50%;
+            border-bottom-right-radius: 50% 50%;
         }
 
         .message {
             position: fixed;
             z-index: 10;
             height: 10vh;
-            font-size: 5vh;
+            font-size: 10vh;
             font-weight: bold;
             color: black;
-            top: 15vh;
-            left: 30vw;
+            top: 12vh;
+            left: 20vw;
             text-align: center;
         }
 
         .score {
             position: fixed;
             z-index: 10;
-            font-size: 5vh;
+            height: 10vh;
+            font-size: 10vh;
             font-weight: bold;
-            color: black; /* Changed score color */
-            top: 2vh;
-            left: 2vw;
+            color: black;
+            top: 0;
+            left: 0;
         }
 
-        /* Exit Button */
-        .exit-btn {
-            position: fixed;
-            top: 2vh;
-            right: 2vw;
-            background: none;
-            border: none;
-            font-size: 3vh;
-            font-weight: bold;
-            cursor: pointer;
-            color: red;
+        .score_val {
+            color: gold;
         }
-        .exit-btn:hover {
-            color: darkred;
+
+        /* Cross button styling */
+        .close-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+            color: black;
+            font-size: 32px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .close-btn:hover {
+            color: red; /* Change color on hover */
         }
     </style>
 </head>
+
 <body>
     <div class="background"></div>
     <img class="bird" src="bird.png" alt="bird-img">
-    <div class="message">Tap to Start</div>
-    <div class="score">
-        <span class="score_title">Score: </span>
-        <span class="score_val">0</span>
+    <div class="message">
+        Press Enter To Start Game
     </div>
-    <!-- Exit Button -->
-    <button class="exit-btn" onclick="window.location.href='../games/index.html'">✖</button>
+    <div class="score">
+        <span class="score_title"></span>
+        <span class="score_val"></span>
+    </div>
+
+    <!-- Cross Button to Close or Redirect -->
+    <button class="close-btn" onclick="window.location.href='.../games/index.html'">×</button>
 
     <script>
-        // Game Variables
+        // Background scrolling speed
         let move_speed = 3;
-        let gravity = 0.15; // Balanced gravity for smoother gameplay
+
+        // Gravity constant value
+        let gravity = 0.2;
+
+        // Bird speed and position
+        let bird_dy = 0;
+        let bird_top = 40; // bird's top position in percentage (40vh initially)
         let bird = document.querySelector('.bird');
-        let bird_props = bird.getBoundingClientRect();
-        let background = document.querySelector('.background').getBoundingClientRect();
+        bird.style.top = bird_top + 'vh';
+
+        // Getting reference to the score element
         let score_val = document.querySelector('.score_val');
         let message = document.querySelector('.message');
         let score_title = document.querySelector('.score_title');
+
+        // Initial game state
         let game_state = 'Start';
 
-        // Detect if the device is an iPad
-        function isIpad() {
-            return /iPad|Macintosh/.test(navigator.userAgent) && 'ontouchend' in document;
-        }
-
-        // Function to Start the Game
-        function startGame() {
-            if (game_state !== 'Play') {
-                document.querySelectorAll('.pipe_sprite').forEach((e) => e.remove());
-                bird.style.top = '40vh';
-                game_state = 'Play';
-                message.innerHTML = '';
-                score_title.innerHTML = 'Score: ';
-                score_val.innerHTML = '0';
+        // Add an event listener for key presses
+        document.addEventListener('keydown', (e) => {
+            // Start the game if Enter key is pressed
+            if (e.key == 'Enter' && game_state !== 'Play') {
+                resetGame();
                 play();
             }
+
+            // Bird jump when ArrowUp or Space is pressed
+            if ((e.key == 'ArrowUp' || e.key == ' ') && game_state == 'Play') {
+                bird_dy = -2.5;  // Very small jump force
+            }
+        });
+
+        // Reset the game
+        function resetGame() {
+            document.querySelectorAll('.pipe_sprite').forEach(e => e.remove());
+            bird.style.top = '40vh';
+            bird_dy = 0;
+            bird_top = 40;
+            score_val.innerHTML = '0';
+            score_title.innerHTML = 'Score : ';
+            game_state = 'Play';
+            message.innerHTML = '';
         }
 
-        // Apply correct event listener based on device
-        if (isIpad()) {
-            document.addEventListener('touchstart', () => startGame());
-        } else {
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') startGame();
-            });
-        }
-
-        // Main Game Loop
+        // Main game loop
         function play() {
+            let pipe_seperation = 0;
+
             function move() {
                 if (game_state !== 'Play') return;
 
-                let pipe_sprites = document.querySelectorAll('.pipe_sprite');
-                pipe_sprites.forEach((element) => {
+                // Move pipes and check for collisions
+                let pipe_sprite = document.querySelectorAll('.pipe_sprite');
+                pipe_sprite.forEach((element) => {
                     let pipe_props = element.getBoundingClientRect();
-                    bird_props = bird.getBoundingClientRect();
+                    let bird_props = bird.getBoundingClientRect();
 
-                    // Remove pipes when off-screen
+                    // Delete pipes that have moved out of screen
                     if (pipe_props.right <= 0) {
                         element.remove();
                     } else {
-                        // Collision Detection
+                        // Collision detection with bird and pipes
                         if (
                             bird_props.left < pipe_props.left + pipe_props.width &&
                             bird_props.left + bird_props.width > pipe_props.left &&
                             bird_props.top < pipe_props.top + pipe_props.height &&
                             bird_props.top + bird_props.height > pipe_props.top
                         ) {
+                            // Game Over condition
                             game_state = 'End';
-                            message.innerHTML = 'Tap to Restart';
+                            message.innerHTML = 'Press Enter To Restart';
                             message.style.left = '28vw';
                             return;
-                        } else {
-                            // Increase Score if Bird Passes Pipe
-                            if (
-                                pipe_props.right < bird_props.left &&
-                                pipe_props.right + move_speed >= bird_props.left &&
-                                element.increase_score === '1'
-                            ) {
-                                score_val.innerHTML = +score_val.innerHTML + 1;
-                            }
-                            element.style.left = pipe_props.left - move_speed + 'px';
                         }
+
+                        // Score logic - increase score when bird crosses pipe
+                        if (pipe_props.right < bird_props.left &&
+                            pipe_props.right + move_speed >= bird_props.left &&
+                            element.increase_score == '1') {
+                            score_val.innerHTML = +score_val.innerHTML + 1;
+                        }
+                        element.style.left = pipe_props.left - move_speed + 'px';
                     }
                 });
 
                 requestAnimationFrame(move);
             }
-            requestAnimationFrame(move);
 
-            let bird_dy = 0;
-
-            // Gravity Application
-            function apply_gravity() {
+            function applyGravity() {
                 if (game_state !== 'Play') return;
-                bird_dy += gravity;
 
-                document.addEventListener('keydown', (e) => {
-                    if ((e.key === 'ArrowUp' || e.key === ' ') && game_state === 'Play') {
-                        bird_dy = -3; // Reduced jump height
-                    }
-                });
+                bird_dy += gravity;  // Apply gravity
+                bird_top += bird_dy;  // Update bird position
+                bird.style.top = bird_top + 'vh';
 
-                document.addEventListener('touchstart', () => {
-                    if (game_state === 'Play') {
-                        bird_dy = -3;
-                    }
-                });
-
-                // Collision with ground or top of screen
-                if (bird_props.top <= 0 || bird_props.bottom >= background.bottom) {
+                // Collision detection with top and bottom of screen
+                if (bird_top <= 0 || bird_top >= window.innerHeight - 100) {
                     game_state = 'End';
-                    message.innerHTML = 'Tap to Restart';
+                    message.innerHTML = 'Press Enter To Restart';
                     message.style.left = '28vw';
                     return;
                 }
 
-                bird.style.top = bird_props.top + bird_dy + 'px';
-                bird_props = bird.getBoundingClientRect();
-                requestAnimationFrame(apply_gravity);
+                requestAnimationFrame(applyGravity);
             }
-            requestAnimationFrame(apply_gravity);
 
-            let pipe_separation = 0;
-            let pipe_gap = 35;
-
-            function create_pipe() {
+            function createPipe() {
                 if (game_state !== 'Play') return;
 
-                if (pipe_separation > 115) {
-                    pipe_separation = 0;
-                    let pipe_pos = Math.floor(Math.random() * 43) + 8;
+                if (pipe_seperation > 115) {
+                    pipe_seperation = 0;
 
+                    // Randomly calculate pipe position on the y-axis
+                    let pipe_posi = Math.floor(Math.random() * 43) + 8;
+
+                    // Create and position pipe elements
                     let pipe_top = document.createElement('div');
-                    pipe_top.className = 'pipe_sprite';
-                    pipe_top.style.top = pipe_pos - 70 + 'vh';
+                    pipe_top.className = 'pipe_sprite pipe_top';
+                    pipe_top.style.top = pipe_posi - 70 + 'vh';
                     pipe_top.style.left = '100vw';
                     document.body.appendChild(pipe_top);
 
                     let pipe_bottom = document.createElement('div');
-                    pipe_bottom.className = 'pipe_sprite';
-                    pipe_bottom.style.top = pipe_pos + pipe_gap + 'vh';
+                    pipe_bottom.className = 'pipe_sprite pipe_bottom';
+                    pipe_bottom.style.top = pipe_posi + 35 + 'vh';
                     pipe_bottom.style.left = '100vw';
                     pipe_bottom.increase_score = '1';
                     document.body.appendChild(pipe_bottom);
                 }
 
-                pipe_separation++;
-                requestAnimationFrame(create_pipe);
+                pipe_seperation++;
+                requestAnimationFrame(createPipe);
             }
-            requestAnimationFrame(create_pipe);
+
+            // Start the game logic
+            requestAnimationFrame(move);
+            requestAnimationFrame(applyGravity);
+            requestAnimationFrame(createPipe);
         }
     </script>
 </body>
+
 </html>
