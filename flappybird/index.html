@@ -70,7 +70,7 @@
             position: fixed;
             z-index: 10;
             height: 10vh;
-            font-size: 10vh;
+            font-size: 7vh;
             font-weight: bold;
             color: black;
             top: 12vh;
@@ -119,7 +119,7 @@
     <div class="background"></div>
     <img class="bird" src="bird.png" alt="bird-img">
     <div class="message">
-        Press Enter To Start Game
+        Press anywhere to start
     </div>
     <div class="score">
         <span class="score_title"></span>
@@ -146,30 +146,18 @@
         let score_val = document.querySelector('.score_val');
         let message = document.querySelector('.message');
         let score_title = document.querySelector('.score_title');
-
-        // Detect if the user is on a mobile device or iPad
-function isMobileDevice() {
-    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-}
-
 // Initial game state
 let game_state = 'Start';
 
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && game_state !== 'Play') {
+document.addEventListener('pointerdown', (e) => {
+    // Handle touch and mouse click on all devices
+    if (game_state !== 'Play') {
         resetGame();
         play();
+    } else {
+        bird_dy = -1.7; // Jump when touching the screen
     }
 });
-
-document.addEventListener('touchstart', (e) => {
-    // Ensure it's a mobile device before handling touch
-    if (isMobileDevice() && game_state !== 'Play') {
-        resetGame();
-        play();
-    }
-});
-
 
 // Bird jump when ArrowUp or Space is pressed
 document.addEventListener('keydown', (e) => {
@@ -177,8 +165,6 @@ document.addEventListener('keydown', (e) => {
         bird_dy = -1.7;  // Very small jump force
     }
 });
-
-
         // Reset the game
         function resetGame() {
             document.querySelectorAll('.pipe_sprite').forEach(e => e.remove());
