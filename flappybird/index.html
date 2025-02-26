@@ -150,15 +150,22 @@
         // Initial game state
         let game_state = 'Start';
 
-       
-        // Add an event listener for key presses
-        document.addEventListener('keydown', (e) => {
-            // Start the game if Enter key is pressed
-            if (e.key == 'Enter' && game_state !== 'Play') {
-                resetGame();
-                play();
-            }
+       // Add an event listener for key presses
+document.addEventListener('keydown', (e) => {
+    // Start the game if Enter key is pressed
+    if (e.key === 'Enter' && game_state !== 'Play') {
+        resetGame();
+        play();
+    }
+});
 
+// Add an event listener for touch events (for mobile/iPad)
+document.addEventListener('touchstart', (e) => {
+    if (game_state !== 'Play') {
+        resetGame();
+        play();
+    }
+});
 
             // Bird jump when ArrowUp or Space is pressed
             if ((e.key == 'ArrowUp' || e.key == ' ') && game_state == 'Play') {
