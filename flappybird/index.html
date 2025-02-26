@@ -33,7 +33,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            background-image: url('bg.jpg');
+            background-image: url('bg.JPG');
             background-size: cover;
             background-position: center;
         }
@@ -82,7 +82,7 @@
             position: fixed;
             z-index: 10;
             height: 10vh;
-            font-size: 10vh;
+            font-size: 5vh;
             font-weight: bold;
             color: black;
             top: 0;
@@ -127,14 +127,14 @@
     </div>
 
     <!-- Cross Button to Close or Redirect -->
-    <button class="close-btn" onclick="window.location.href='.../games/index.html'">×</button>
+    <button class="close-btn" onclick="window.location.href='../games/index.html'">×</button>
 
     <script>
         // Background scrolling speed
         let move_speed = 3;
 
         // Gravity constant value
-        let gravity = 0.2;
+        let gravity = 0.14;
 
         // Bird speed and position
         let bird_dy = 0;
@@ -147,31 +147,37 @@
         let message = document.querySelector('.message');
         let score_title = document.querySelector('.score_title');
 
-        // Initial game state
-        let game_state = 'Start';
+        // Detect if the user is on a mobile device or iPad
+function isMobileDevice() {
+    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+}
 
-       // Add an event listener for key presses
+// Initial game state
+let game_state = 'Start';
+
 document.addEventListener('keydown', (e) => {
-    // Start the game if Enter key is pressed
     if (e.key === 'Enter' && game_state !== 'Play') {
         resetGame();
         play();
     }
 });
 
-// Add an event listener for touch events (for mobile/iPad)
 document.addEventListener('touchstart', (e) => {
-    if (game_state !== 'Play') {
+    // Ensure it's a mobile device before handling touch
+    if (isMobileDevice() && game_state !== 'Play') {
         resetGame();
         play();
     }
 });
 
-            // Bird jump when ArrowUp or Space is pressed
-            if ((e.key == 'ArrowUp' || e.key == ' ') && game_state == 'Play') {
-                bird_dy = -2.5;  // Very small jump force
-            }
-        });
+
+// Bird jump when ArrowUp or Space is pressed
+document.addEventListener('keydown', (e) => {
+    if ((e.key === 'ArrowUp' || e.key === ' ') && game_state === 'Play') {
+        bird_dy = -1.7;  // Very small jump force
+    }
+});
+
 
         // Reset the game
         function resetGame() {
