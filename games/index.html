@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games</title>
+    <title>Entertainment</title>
     <style>
         /* Back button styling */
         .back-button {
@@ -48,32 +48,62 @@
             font-size: 45px;
             font-weight: bolder;
         }
+        <head>
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Target the header element */
         header {
             background-color: #4c6444;
             color: #fff;
-            padding: 20px 30px;
+            font-size: 2em;
+            font-weight: bold;
+            padding: 20px 20px;
             text-align: center;
             position: relative;
             font-size: 20px;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .cover {
+            border: 7px solid rgb(22, 83, 28);
+            display: flex;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        /* Adding delay to the second image */
+        a:nth-child(4) .cover {
+            animation-delay: 0.2s;
+        }
+        
+        .back-button {
+            /* Your back button styles here */
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Games</h1>
+        <h1>Entertainment</h1>
     </header>
-
+    
     <!-- Back Button (cross) -->
     <button class="back-button" onclick="window.location.href='../index.html'">&#10005;</button>
-
+    
     <a href="../flappybird/index.html">
-        <img src="https://miro.medium.com/v2/resize:fit:1400/1*MZcxSSARUkVfSeAwzQ95kw.png" alt="Flappy Bird" width="400" class="flappybirdcover"/>
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*MZcxSSARUkVfSeAwzQ95kw.png" alt="Flappy Bird" width="400px" class="cover"/>
     </a>
-
-    <style>
-        .flappybirdcover {
-            border: 7px solid black;
-        }
-    </style>
+    
+    <a href="../cardodger/index.html">
+        <img src="./sdfbc.webp" alt="space dodger" width="400px" class="cover"/>
+    </a>
 </body>
 </html>
