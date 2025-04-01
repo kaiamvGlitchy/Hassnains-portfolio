@@ -46,8 +46,6 @@
       top: 0;
       z-index: 1000;
       box-shadow: var(--box-shadow);
-      opacity: 0;
-      animation: fadeIn 1s 0.5s forwards, slideInFromTop 1s forwards;
     }
 
     .header-content {
@@ -106,8 +104,6 @@
     main {
       margin-top: 100px;
       padding: 20px 0;
-      opacity: 0;
-      animation: fadeIn 1.5s forwards;
     }
 
     section {
@@ -132,10 +128,11 @@
 
     /* Hero Section */
     .hero {
+      background-image: url(bgg.png);
       height: 100vh;
       display: flex;
       align-items: center;
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('bgg.png') no-repeat center center;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), #34495e;
       background-size: cover;
       color: var(--text-light);
       text-align: center;
@@ -151,33 +148,21 @@
     .hero h1 {
       font-size: 3.5rem;
       margin-bottom: 20px;
-      animation: fadeIn 1s ease, slideInFromBottom 1s ease;
     }
 
     .hero p {
       font-size: 1.5rem;
       margin-bottom: 30px;
-      animation: fadeIn 1.5s ease, slideInFromBottom 1.5s ease;
     }
 
-    .cta-button {
-      display: inline-block;
-      padding: 12px 30px;
-      background-color: var(--accent-color);
-      color: var(--text-light);
-      text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: 600;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      box-shadow: var(--box-shadow);
-      animation: fadeIn 2s ease, slideInFromBottom 2s ease;
+    /* Fade-in animation for sections */
+    .fade-in {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
 
-    .cta-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-      background-color: #5c9352;
+    .fade-in.visible {
+      opacity: 1;
     }
 
     /* About Section */
@@ -187,48 +172,10 @@
       padding: 40px;
       box-shadow: var(--box-shadow);
       transition: transform 0.3s ease;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    .animate {
-      animation: fadeInUp 0.8s ease forwards;
     }
 
     .about:hover {
       transform: translateY(-10px);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 30px;
-    }
-
-    .about-card {
-      background-color: var(--primary-color);
-      color: var(--text-light);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: var(--box-shadow);
-      transition: all 0.3s ease;
-    }
-
-    .about-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .about-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 15px;
-      color: var(--text-light);
-    }
-
-    .about-card p {
-      font-size: 1rem;
-      line-height: 1.6;
     }
 
     /* Skills Section */
@@ -238,8 +185,6 @@
       border-radius: 15px;
       color: var(--text-light);
       box-shadow: var(--box-shadow);
-      opacity: 0;
-      transform: translateY(30px);
     }
 
     .skills-grid {
@@ -293,6 +238,54 @@
       transition: width 1.5s ease-in-out;
     }
 
+    /* Photography Section Styles */
+    .photography-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .photo-item {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: all 0.3s ease;
+    }
+
+    .photo-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .photo-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: all 0.5s ease;
+      background-color: #ddd;
+    }
+
+    .photo-item:hover .photo-img {
+      transform: scale(1.05);
+    }
+
+    .photo-info {
+      padding: 15px;
+    }
+
+    .photo-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      color: var(--secondary-color);
+    }
+
+    .photo-info p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
     /* Future Goals Section */
     .future-goals {
       background-color: var(--accent-color);
@@ -300,8 +293,6 @@
       border-radius: 15px;
       color: var(--text-light);
       box-shadow: var(--box-shadow);
-      opacity: 0;
-      transform: translateY(30px);
     }
 
     .goals-list {
@@ -352,8 +343,6 @@
       transition: all 0.4s ease;
       position: relative;
       overflow: hidden;
-      opacity: 0;
-      transform: translateY(30px);
     }
 
     .quote-container:hover {
@@ -480,36 +469,10 @@
       transform: translateY(0);
     }
 
-    /* Animations */
+    /* Animations - Simplified to just fade in */
     @keyframes fadeIn {
       0% { opacity: 0; }
       100% { opacity: 1; }
-    }
-
-    @keyframes slideInFromTop {
-      0% { transform: translateY(-50px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes slideInFromBottom {
-      0% { transform: translateY(50px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes slideInFromLeft {
-      0% { transform: translateX(-50px); opacity: 0; }
-      100% { transform: translateX(0); opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulseEffect {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
     }
 
     /* Back to Top Button */
@@ -540,81 +503,6 @@
     .back-to-top:hover {
       background-color: var(--secondary-color);
       transform: translateY(-5px);
-    }
-
-    /* Portfolio Section (New) */
-    .portfolio {
-      padding: 60px 0;
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .portfolio-item {
-      background-color: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: var(--box-shadow);
-      transition: all 0.3s ease;
-    }
-
-    .portfolio-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .portfolio-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .portfolio-content {
-      padding: 20px;
-    }
-
-    .portfolio-content h3 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-    }
-
-    .portfolio-content p {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 15px;
-    }
-
-    .portfolio-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 15px;
-    }
-
-    .tag {
-      background-color: var(--accent-color);
-      color: white;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-    }
-
-    .view-btn {
-      display: inline-block;
-      padding: 8px 20px;
-      background-color: var(--primary-color);
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-
-    .view-btn:hover {
-      background-color: var(--secondary-color);
     }
 
     /* Responsive Styles */
@@ -662,9 +550,8 @@
         font-size: 1.8rem;
       }
       
-      .about-grid, 
       .skills-grid,
-      .portfolio-grid {
+      .photography-grid {
         grid-template-columns: 1fr;
       }
       
@@ -683,8 +570,6 @@
         flex-wrap: wrap;
       }
     }
-
-    
   </style>
 </head>
 <body>
@@ -700,8 +585,8 @@
         <nav>
           <ul id="menu">
             <li><a href="#hero">Home</a></li>
-
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#photography">Photography</a></li>
             <li><a href="#future-goals">Future Goals</a></li>
           </ul>
         </nav>
@@ -714,13 +599,13 @@
     <section class="hero" id="hero">
       <div class="container">
         <div class="hero-content">
-          <h1>Hi, I'm Kai
-          </h1>
+          <h1>Hi, I'm Kai</h1>
         </div>
       </div>
     </section>
+
     <!-- Skills Section -->
-    <section id="skills">
+    <section id="skills" class="fade-in">
       <div class="container">
         <h2 class="section-title">My Skills</h2>
         <div class="skills">
@@ -761,10 +646,29 @@
       </div>
     </section>
 
-
+    <!-- Photography Section -->
+    <section id="photography" class="fade-in">
+      <div class="container">
+        <h2 class="section-title">Photography</h2>
+        <div class="about">
+          <p>I'm currently learning photography and exploring different styles and techniques. Here are some of my recent captures.</p>
+          
+          <div class="photography-grid">
+            <div class="photo-item">
+              <img src="muffin.jpg.jpg" alt="Photography sample 1" class="photo-img" size->
+              <div class="photo-info">
+                <h3>A muffin Lol</h3>
+                <p>Captured while at the cafe :) </p>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Future Goals Section -->
-    <section id="future-goals">
+    <section id="future-goals" class="fade-in">
       <div class="container">
         <h2 class="section-title">My Future Goals</h2>
         <div class="future-goals">
@@ -779,22 +683,20 @@
     </section>
 
     <!-- Quote Section -->
-    <section class="quote-section">
+    <section class="quote-section fade-in">
       <div class="container">
         <div class="quote-container" id="quoteContainer">
-          "Kai is built different"
+          "Kai is built different,even your mom tells you to be like me😂"
         </div>
       </div>
     </section>
 
     <!-- Social Section -->
-    <section class="social-section">
+    <section class="social-section fade-in">
       <div class="container">
         <h2 class="section-title">Discord</h2>
         <div class="social-icons">
-<p>@kaieditzamv
-</p>
-          </a>
+          <p>@kaieditzamv</p>
         </div>
       </div>
     </section>
@@ -805,8 +707,8 @@
       <div class="footer-content">
         <div class="footer-links">
           <a href="#hero">Home</a>
-          <a href="#about">About</a>
           <a href="#skills">Skills</a>
+          <a href="#photography">Photography</a>
           <a href="#future-goals">Goals</a>
         </div>
         <p class="copyright">© 2025 Kaiamv.com All rights reserved.</p>
@@ -886,23 +788,25 @@
       }, 3000);
     });
     
-    // Scroll Animation
-    const animateOnScroll = () => {
-      const elements = document.querySelectorAll('.about, .skills, .future-goals, .quote-container');
-      
-      elements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top;
+    // Simple Fade-in Animation
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const fadeInOnScroll = () => {
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
         
-        if (elementPosition < windowHeight - 100) {
-          element.classList.add('animate');
+        if (elementTop < windowHeight - 100) {
+          element.classList.add('visible');
         }
       });
     };
     
-    // Run animation check on scroll
-    window.addEventListener('scroll', animateOnScroll);
+    // Run fade animation check on scroll
+    window.addEventListener('scroll', fadeInOnScroll);
     
     // Run once on load to check for elements already in view
-    window.addEventListener('load', animateOnScroll);
+    window.addEventListener('load', fadeInOnScroll);
   </script>
+</body>
+</html>
