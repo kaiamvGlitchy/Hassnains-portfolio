@@ -238,53 +238,47 @@
       transition: width 1.5s ease-in-out;
     }
 
-    /* Photography Section Styles */
-    .photography-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
+   /* Updated Photography Section Styles */
+.photography-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
 
-    .photo-item {
-      background-color: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: var(--box-shadow);
-      transition: all 0.3s ease;
-    }
+.photo-item {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent; /* Changed from white to transparent */
+  box-shadow: none; /* Removed box shadow */
+  transition: none; /* Removed transition */
+  border-radius: 0; /* Removed border radius from container */
+  overflow: visible; /* Changed from hidden to visible */
+}
 
-    .photo-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    }
+/* Removed hover effect from photo-item */
+.photo-item:hover {
+  transform: none;
+  box-shadow: none;
+}
 
-    .photo-img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      transition: all 0.5s ease;
-      background-color: #ddd;
-    }
+.photo-img {
+  width: 100%;
+  height: auto; /* Auto height to preserve aspect ratio */
+  object-fit: contain;
+  border-radius: 15px; /* Added rounded corners to the image directly */
+  margin-bottom: 5px; /* Small margin after the image */
+}
 
-    .photo-item:hover .photo-img {
-      transform: scale(1.05);
-    }
+/* Removed hover effect from photo-img */
+.photo-item:hover .photo-img {
+  transform: none;
+}
 
-    .photo-info {
-      padding: 15px;
-    }
-
-    .photo-info h3 {
-      font-size: 1.2rem;
-      margin-bottom: 5px;
-      color: var(--secondary-color);
-    }
-
-    .photo-info p {
-      font-size: 0.9rem;
-      color: #555;
-    }
+/* Removed photo-info styling since we're not showing captions */
+.photo-info {
+  display: none; /* Hide the caption section completely */
+}
 
     /* Future Goals Section */
     .future-goals {
@@ -651,14 +645,12 @@
       <div class="container">
         <h2 class="section-title">Photography</h2>
         <div class="about">
-          <p>I'm currently learning photography and exploring different styles and techniques. Here are some of my recent captures.</p>
+          <p>I'm currently trying photography cuz why not, Some random photos:</p>
           
           <div class="photography-grid">
             <div class="photo-item">
               <img src="muffin.jpg.jpg" alt="Photography sample 1" class="photo-img" size->
               <div class="photo-info">
-                <h3>A muffin Lol</h3>
-                <p>Captured while at the cafe :) </p>
               </div>
             </div>
             </div>
