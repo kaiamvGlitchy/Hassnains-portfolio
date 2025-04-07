@@ -128,7 +128,6 @@
 
     /* Hero Section */
     .hero {
-      background-image: url(bgg.png);
       height: 100vh;
       display: flex;
       align-items: center;
@@ -238,7 +237,7 @@
       transition: width 1.5s ease-in-out;
     }
 
-   /* Updated Photography Section Styles */
+    /* Updated Photography Section Styles */
 .photography-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -279,7 +278,6 @@
 .photo-info {
   display: none; /* Hide the caption section completely */
 }
-
     /* Future Goals Section */
     .future-goals {
       background-color: var(--accent-color);
@@ -564,6 +562,69 @@
         flex-wrap: wrap;
       }
     }
+
+  /* Styles for the two-part skills section */
+  .skills-category {
+    margin-bottom: 40px;
+  }
+  
+  .skills-category:last-child {
+    margin-bottom: 0;
+  }
+  
+  .category-title {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+  }
+  
+  .learning .category-title {
+    color: var(--text-dark);
+  }
+  
+  .skills {
+    background-color: var(--secondary-color);
+    padding: 30px;
+    border-radius: 15px;
+    color: var(--text-light);
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease;
+  }
+  
+  .skills:hover {
+    transform: translateY(-5px);
+  }
+  
+  .learning-skills {
+    background-color: var(--accent-color);
+  }
+  
+  .learning-card .progress {
+    background: linear-gradient(90deg, #74c2a9, #7acafc);
+  }
+
+  
+  /* Add a small icon to indicate "learning" */
+  .learning-card h3::after {
+    content: "🔄";
+    font-size: 0.8em;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .category-title {
+      font-size: 1.5rem;
+    }
+    
+    .skills {
+      padding: 20px;
+    }
+  }
+</style>
+
   </style>
 </head>
 <body>
@@ -598,66 +659,184 @@
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="fade-in">
-      <div class="container">
-        <h2 class="section-title">My Skills</h2>
-        <div class="skills">
-          <div class="skills-grid">
-            <div class="skill-card">
-              <h3>CapCut</h3>
-              <p>3 years of experience creating engaging video content, transitions, and effects.</p>
-              <div class="progress-bar">
-                <div class="progress" style="width: 90%;"></div>
-              </div>
-            </div>
-            
-            <div class="skill-card">
-              <h3>Blender</h3>
-              <p>Learning 3D modeling and animation to enhance my video editing capabilities.</p>
-              <div class="progress-bar">
-                <div class="progress" style="width: 45%;"></div>
-              </div>
-            </div>
-            
-            <div class="skill-card">
-              <h3>Game Development</h3>
-              <p>Currently learning Roblox Studio for beginner game development.</p>
-              <div class="progress-bar">
-                <div class="progress" style="width: 35%;"></div>
-              </div>
-            </div>
-            
-            <div class="skill-card">
-              <h3>Web Development</h3>
-              <p>Basic skills in HTML, CSS, and JavaScript for website creation.</p>
-              <div class="progress-bar">
-                <div class="progress" style="width: 40%;"></div>
-              </div>
+   <!-- Updated Skills Section with two categories -->
+<section id="skills" class="fade-in">
+  <div class="container">
+    <h2 class="section-title">My Skills</h2>
+    
+    <!-- Current Skills -->
+    <div class="skills-category">
+      <h3 class="category-title">What I Know</h3>
+      <div class="skills">
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>CapCut</h3>
+            <p>3 years of experience creating engaging video content, transitions, and effects.</p>
+            <div class="progress-bar">
+              <div class="progress" style="width: 90%;"></div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Photography Section -->
-    <section id="photography" class="fade-in">
-      <div class="container">
-        <h2 class="section-title">Photography</h2>
-        <div class="about">
-          <p>I'm currently trying photography cuz why not, Some random photos:</p>
           
-          <div class="photography-grid">
-            <div class="photo-item">
-              <img src="muffin.jpg.jpg" alt="Photography sample 1" class="photo-img" size->
-              <div class="photo-info">
-              </div>
+          <div class="skill-card">
+            <h3>Web Development</h3>
+            <p>Basic skills in HTML, CSS, and JavaScript for website creation.</p>
+            <div class="progress-bar">
+              <div class="progress" style="width: 40%;"></div>
             </div>
+          </div>
+          
+          <!-- Add more current skills as needed -->
+        </div>
+      </div>
+    </div>
+    
+    <!-- Skills Currently Learning -->
+    <div class="skills-category learning">
+      <h3 class="category-title">What I'm Learning</h3>
+      <div class="skills learning-skills">
+        <div class="skills-grid">
+          <div class="skill-card learning-card">
+            <h3>Blender</h3>
+            <p>Learning 3D modeling and animation to enhance my video editing capabilities.</p>
+            <div class="progress-bar">
+              <div class="progress learning-progress" style="width: 45%;"></div>
+            </div>
+          </div>
+          
+          <div class="skill-card learning-card">
+            <h3>Game Development</h3>
+            <p>Currently learning Roblox Studio for beginner game development.</p>
+            <div class="progress-bar">
+              <div class="progress learning-progress" style="width: 35%;"></div>
+            </div>
+          </div>
+
+          <div class="skill-card learning-card">
+            <h3>Photography</h3>
+            <p>Learning photography for fun!</p>
+            <div class="progress-bar">
+              <div class="progress learning-progress" style="width: 35%;"></div>
+            </div>
+          </div>
+          
+          <!-- Add more learning skills as needed -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Updated Photography Section -->
+<section id="photography" class="fade-in">
+  <div class="container">
+    <h2 class="section-title">Photography</h2>
+    <div class="about">
+      <p>I'm currently learning photography and exploring different styles and techniques. Here are some of my recent captures.</p>
+      
+      <div class="photography-carousel">
+        <div class="carousel-container">
+          <div class="carousel-track">
+            <div class="photo-item">
+              <img src="muffin.jpg.jpg" alt="Photography sample 1" class="photo-img">
+            </div>
+            <div class="photo-item">
+              <img src="bjkh.png.JPG" alt="Photography sample 2" class="photo-img">
+            </div>
+            <div class="photo-item">
+              <img src="rubik.png.jpg" alt="Photography sample 3" class="photo-img">
+            </div>
+            <div class="photo-item">
+              <img src="PHOTO 4.jpg" alt="Photography sample 3" class="photo-img">
+            </div>
+            <div class="photo-item">
+              <img src="PHOTO5.PNG.jpg" alt="Photography sample 3" class="photo-img">
+            </div>
+            <div class="photo-item">
+              <img src="PHOTO6.jpg" alt="Photography sample 3" class="photo-img">
+            </div>
+            <!-- Duplicate images for continuous scrolling effect -->
+            <div class="photo-item">
+              <img src="muffin.jpg.jpg" alt="Photography sample 1" class="photo-img">
+            </div>
+            <div class="photo-item">
+              <img src="bjkh.png.JPG" alt="Photography sample 2" class="photo-img">
+            </div>
+            <div class="photo-item">
+              <img src="rubik.png.jpg" alt="Photography sample 3" class="photo-img">
+            </div>
+            <div class="photo-item">
+              <img src="PHOTO 4.jpg" alt="Photography sample 3" class="photo-img">
+            </div>
+            <div class="photo-item">
+              <img src="PHOTO5.PNG.jpg" alt="Photography sample 3" class="photo-img">
+            </div>
+            <div class="photo-item">
+              <img src="PHOTO6.jpg" alt="Photography sample 3" class="photo-img">
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+<!-- Add these styles to your existing CSS -->
+<style>
+  .photography-carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-top: 30px;
+  }
+
+  .carousel-container {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .carousel-track {
+    display: flex;
+    width: calc(300px * 6); /* Width of each item * number of items (including duplicates) */
+    animation: scroll 30s linear infinite;
+  }
+
+  .carousel-track:hover {
+    animation-play-state: paused;
+  }
+
+  .carousel-track .photo-item {
+    flex: 0 0 300px;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-400px * 3)); /* Width of each item * number of original items */
+    }
+  }
+
+  /* Update existing styles to work with the carousel */
+  .photo-item {
+    background-color: transparent;
+    transition: transform 0.3s ease;
+  }
+
+  .photo-item:hover {
+    transform: scale(1.05);
+  }
+
+  .photo-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+  }
+</style>
 
     <!-- Future Goals Section -->
     <section id="future-goals" class="fade-in">
@@ -678,7 +857,7 @@
     <section class="quote-section fade-in">
       <div class="container">
         <div class="quote-container" id="quoteContainer">
-          "Kai is built different,even your mom tells you to be like me😂"
+          "Kai is built different"
         </div>
       </div>
     </section>
