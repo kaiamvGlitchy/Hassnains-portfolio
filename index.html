@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Kai's Portfolio</title>
   <style>
-:root {
-  --primary-color: #4e7a9e;      /* Medium blue-gray */
-  --secondary-color: #2c3e50;    /* Dark blue-gray */
-  --accent-color: #74a5c2;       /* Light blue-gray highlight */
-  --text-light: #ffffff;
-  --text-dark: #2c3e50;
-  --background-color: #ecf0f1;   /* Light grayish background */
-  --box-shadow: 0 4px 8px rgba(44, 62, 80, 0.2);
-}
-    
+    :root {
+      --primary-color: #4e7a9e;
+      /* Medium blue-gray */
+      --secondary-color: #2c3e50;
+      /* Dark blue-gray */
+      --accent-color: #74a5c2;
+      /* Light blue-gray highlight */
+      --text-light: #ffffff;
+      --text-dark: #2c3e50;
+      --background-color: #ecf0f1;
+      /* Light grayish background */
+      --box-shadow: 0 4px 8px rgba(44, 62, 80, 0.2);
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: var(--background-color);
@@ -242,46 +244,56 @@
     }
 
     /* Updated Photography Section Styles */
-.photography-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
-}
+    .photography-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
 
-.photo-item {
-  display: flex;
-  flex-direction: column;
-  background-color: transparent; /* Changed from white to transparent */
-  box-shadow: none; /* Removed box shadow */
-  transition: none; /* Removed transition */
-  border-radius: 0; /* Removed border radius from container */
-  overflow: visible; /* Changed from hidden to visible */
-}
+    .photo-item {
+      display: flex;
+      flex-direction: column;
+      background-color: transparent;
+      /* Changed from white to transparent */
+      box-shadow: none;
+      /* Removed box shadow */
+      transition: none;
+      /* Removed transition */
+      border-radius: 0;
+      /* Removed border radius from container */
+      overflow: visible;
+      /* Changed from hidden to visible */
+    }
 
-/* Removed hover effect from photo-item */
-.photo-item:hover {
-  transform: none;
-  box-shadow: none;
-}
+    /* Removed hover effect from photo-item */
+    .photo-item:hover {
+      transform: none;
+      box-shadow: none;
+    }
 
-.photo-img {
-  width: 100%;
-  height: auto; /* Auto height to preserve aspect ratio */
-  object-fit: contain;
-  border-radius: 15px; /* Added rounded corners to the image directly */
-  margin-bottom: 5px; /* Small margin after the image */
-}
+    .photo-img {
+      width: 100%;
+      height: auto;
+      /* Auto height to preserve aspect ratio */
+      object-fit: contain;
+      border-radius: 15px;
+      /* Added rounded corners to the image directly */
+      margin-bottom: 5px;
+      /* Small margin after the image */
+    }
 
-/* Removed hover effect from photo-img */
-.photo-item:hover .photo-img {
-  transform: none;
-}
+    /* Removed hover effect from photo-img */
+    .photo-item:hover .photo-img {
+      transform: none;
+    }
 
-/* Removed photo-info styling since we're not showing captions */
-.photo-info {
-  display: none; /* Hide the caption section completely */
-}
+    /* Removed photo-info styling since we're not showing captions */
+    .photo-info {
+      display: none;
+      /* Hide the caption section completely */
+    }
+
     /* Future Goals Section */
     .future-goals {
       background-color: var(--accent-color);
@@ -467,8 +479,13 @@
 
     /* Animations - Simplified to just fade in */
     @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
     }
 
     /* Back to Top Button */
@@ -506,11 +523,11 @@
       .container {
         padding: 0 15px;
       }
-      
+
       .menu-toggle {
         display: flex;
       }
-      
+
       nav ul {
         position: fixed;
         top: 80px;
@@ -523,139 +540,144 @@
         transition: left 0.3s ease;
         z-index: 999;
       }
-      
+
       nav ul.active {
         left: 0;
       }
-      
+
       nav ul li {
         margin: 10px 0;
         width: 100%;
         text-align: center;
       }
-      
+
       .hero h1 {
         font-size: 2.5rem;
       }
-      
+
       .hero p {
         font-size: 1.2rem;
       }
-      
+
       .section-title {
         font-size: 1.8rem;
       }
-      
+
       .skills-grid,
       .photography-grid {
         grid-template-columns: 1fr;
       }
-      
-      .about, 
-      .skills, 
+
+      .about,
+      .skills,
       .future-goals {
         padding: 30px 20px;
       }
-      
+
       .quote-container {
         font-size: 1.3rem;
         padding: 20px 30px;
       }
-      
+
       .social-icons {
         flex-wrap: wrap;
       }
     }
 
-  /* Styles for the two-part skills section */
-  .skills-category {
-    margin-bottom: 40px;
-  }
-  
-  .skills-category:last-child {
-    margin-bottom: 0;
-  }
-  
-  .category-title {
-    font-size: 1.8rem;
-    text-align: center;
-    margin-bottom: 20px;
-    color: var(--text-dark);
-  }
-  
-  .learning .category-title {
-    color: var(--text-dark);
-  }
-  
-  .skills {
-    background-color: var(--secondary-color);
-    padding: 30px;
-    border-radius: 15px;
-    color: var(--text-light);
-    box-shadow: var(--box-shadow);
-    transition: transform 0.3s ease;
-  }
-  
-  .skills:hover {
-    transform: translateY(-5px);
-  }
-  
-  .learning-skills {
-    background-color: var(--accent-color);
-  }
-  
-  .learning-card .progress {
-    background: linear-gradient(90deg, #5aac92, #7acafc);
-  }
-  
-  /* Add a small icon to indicate "learning" */
-  .learning-card h3::after {
-    content: "🔄";
-    font-size: 0.8em;
-    margin-left: 8px;
-    vertical-align: middle;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
+    /* Styles for the two-part skills section */
+    .skills-category {
+      margin-bottom: 40px;
+    }
+
+    .skills-category:last-child {
+      margin-bottom: 0;
+    }
+
     .category-title {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--text-dark);
     }
-    
+
+    .learning .category-title {
+      color: var(--text-dark);
+    }
+
     .skills {
-      padding: 20px;
+      background-color: var(--secondary-color);
+      padding: 30px;
+      border-radius: 15px;
+      color: var(--text-light);
+      box-shadow: var(--box-shadow);
+      transition: transform 0.3s ease;
     }
-  }
 
-  @keyframes rubberbounceinright {
-  from {
-    transform: translateX(1000px) scale(0.105);
-  }
-  10% {
-    transform: translateX(0) scale(0.75);
-  }
-  40% {
-    transform: scale(1);
-  }
-  60% {
-    transform: scale(0.6);
-  }
-  80% {
-    transform: scale(0.9);
-  }
-  to {
-    transform: scale(1);
-  }
-}
+    .skills:hover {
+      transform: translateY(-5px);
+    }
 
-.rubberbounceinright {
-  animation: rubberbounceinright 1s ease forwards;
-}
+    .learning-skills {
+      background-color: var(--accent-color);
+    }
 
-</style>
+    .learning-card .progress {
+      background: linear-gradient(90deg, #5aac92, #7acafc);
+    }
+
+    /* Add a small icon to indicate "learning" */
+    .learning-card h3::after {
+      content: "🔄";
+      font-size: 0.8em;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .category-title {
+        font-size: 1.5rem;
+      }
+
+      .skills {
+        padding: 20px;
+      }
+    }
+
+    @keyframes rubberbounceinright {
+      from {
+        transform: translateX(1000px) scale(0.105);
+      }
+
+      10% {
+        transform: translateX(0) scale(0.75);
+      }
+
+      40% {
+        transform: scale(1);
+      }
+
+      60% {
+        transform: scale(0.6);
+      }
+
+      80% {
+        transform: scale(0.9);
+      }
+
+      to {
+        transform: scale(1);
+      }
+    }
+
+    .rubberbounceinright {
+      animation: rubberbounceinright 1s ease forwards;
+    }
+  </style>
 
   </style>
 </head>
+
 <body>
   <header>
     <div class="container">
@@ -688,184 +710,188 @@
       </div>
     </section>
 
-   <!-- Updated Skills Section with two categories -->
-<section id="skills" class="">
-  <div class="container">
-    <h2 class="section-title">My Skills</h2>
-    
-    <!-- Current Skills -->
-    <div class="skills-category">
-      <h3 class="category-title">What I Know</h3>
-      <div class="skills">
-        <div class="skills-grid">
-          <div class="skill-card">
-            <h3>CapCut</h3>
-            <p>3 years of experience creating engaging video content, transitions, and effects.</p>
-            <div class="progress-bar">
-              <div class="progress" style="width: 60%;"></div>
-            </div>
-          </div>
-          
-          <div class="skill-card">
-            <h3>Web Development</h3>
-            <p>Basic skills in HTML, CSS, and JavaScript for website creation.</p>
-            <div class="progress-bar">
-              <div class="progress" style="width: 30%;"></div>
-            </div>
-          </div>
-          
-          <!-- Add more current skills as needed -->
-        </div>
-      </div>
-    </div>
-    
-    <!-- Skills Currently Learning -->
-    <div class="skills-category learning" class="rubberbounceinright">
-      <h3 class="category-title">What I'm Learning</h3>
-      <div class="skills learning-skills">
-        <div class="skills-grid">
-          <div class="skill-card learning-card">
-            <h3>Blender</h3>
-            <p>Learning 3D modeling and animation to enhance my video editing capabilities.</p>
-            <div class="progress-bar">
-              <div class="progress learning-progress" style="width: 5%;"></div>
-            </div>
-          </div>
-          
-          <div class="skill-card learning-card">
-            <h3>Game Development</h3>
-            <p>Currently learning Roblox Studio for beginner game development.</p>
-            <div class="progress-bar">
-              <div class="progress learning-progress" style="width: 0%;"></div>
-            </div>
-          </div>
+    <!-- Updated Skills Section with two categories -->
+    <section id="skills" class="">
+      <div class="container">
+        <h2 class="section-title">My Skills</h2>
 
-          <div class="skill-card learning-card">
-            <h3>Photography</h3>
-            <p>Learning photography for fun!</p>
-            <div class="progress-bar">
-              <div class="progress learning-progress" style="width: 7%;"></div>
+        <!-- Current Skills -->
+        <div class="skills-category">
+          <h3 class="category-title">What I Know</h3>
+          <div class="skills">
+            <div class="skills-grid">
+              <div class="skill-card">
+                <h3>CapCut</h3>
+                <p>3 years of experience creating engaging video content, transitions, and effects.</p>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 60%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-card">
+                <h3>Web Development</h3>
+                <p>Basic skills in HTML, CSS, and JavaScript for website creation.</p>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 30%;"></div>
+                </div>
+              </div>
+
+              <!-- Add more current skills as needed -->
             </div>
           </div>
-          
-          <!-- Add more learning skills as needed -->
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- Updated Photography Section -->
-<section id="photography" class="fade-in">
-  <div class="container">
-    <h2 class="section-title">Photography</h2>
-    <div class="about">
-      <p>I'm currently learning photography and exploring different styles and techniques. Here are some of my recent captures.</p>
-      
-      <div class="photography-carousel">
-        <div class="carousel-container">
-          <div class="carousel-track">
-            <div class="photo-item">
-              <img src="muffin.jpg.jpg" alt="Photography sample 1" class="photo-img">
-            </div>
-            <div class="photo-item">
-              <img src="bjkh.png.JPG" alt="Photography sample 2" class="photo-img">
-            </div>
-            <div class="photo-item">
-              <img src="rubik.png.jpg" alt="Photography sample 3" class="photo-img">
-            </div>
-            <div class="photo-item">
-              <img src="PHOTO 4.jpg" alt="Photography sample 3" class="photo-img">
-            </div>
-            <div class="photo-item">
-              <img src="PHOTO5.PNG.jpg" alt="Photography sample 3" class="photo-img">
-            </div>
-            <div class="photo-item">
-              <img src="PHOTO6.jpg" alt="Photography sample 3" class="photo-img">
-            </div>
-            <!-- Duplicate images for continuous scrolling effect -->
-            <div class="photo-item">
-              <img src="muffin.jpg.jpg" alt="Photography sample 1" class="photo-img">
-            </div>
-            <div class="photo-item">
-              <img src="bjkh.png.JPG" alt="Photography sample 2" class="photo-img">
-            </div>
-            <div class="photo-item">
-              <img src="rubik.png.jpg" alt="Photography sample 3" class="photo-img">
-            </div>
-            <div class="photo-item">
-              <img src="PHOTO 4.jpg" alt="Photography sample 3" class="photo-img">
-            </div>
-            <div class="photo-item">
-              <img src="PHOTO5.PNG.jpg" alt="Photography sample 3" class="photo-img">
-            </div>
-            <div class="photo-item">
-              <img src="PHOTO6.jpg" alt="Photography sample 3" class="photo-img">
+        <!-- Skills Currently Learning -->
+        <div class="skills-category learning" class="rubberbounceinright">
+          <h3 class="category-title">What I'm Learning</h3>
+          <div class="skills learning-skills">
+            <div class="skills-grid">
+              <div class="skill-card learning-card">
+                <h3>Blender</h3>
+                <p>Learning 3D modeling and animation to enhance my video editing capabilities.</p>
+                <div class="progress-bar">
+                  <div class="progress learning-progress" style="width: 5%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-card learning-card">
+                <h3>Game Development</h3>
+                <p>Currently learning Roblox Studio for beginner game development.</p>
+                <div class="progress-bar">
+                  <div class="progress learning-progress" style="width: 0%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-card learning-card">
+                <h3>Photography</h3>
+                <p>Learning photography for fun!</p>
+                <div class="progress-bar">
+                  <div class="progress learning-progress" style="width: 7%;"></div>
+                </div>
+              </div>
+
+              <!-- Add more learning skills as needed -->
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Add these styles to your existing CSS -->
-<style>
-  .photography-carousel {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    margin-top: 30px;
-  }
+    <!-- Updated Photography Section -->
+    <section id="photography" class="fade-in">
+      <div class="container">
+        <h2 class="section-title">Photography</h2>
+        <div class="about">
+          <p>I'm currently learning photography and exploring different styles and techniques. Here are some of my
+            recent captures.</p>
 
-  .carousel-container {
-    width: 100%;
-    overflow: hidden;
-  }
+          <div class="photography-carousel">
+            <div class="carousel-container">
+              <div class="carousel-track">
+                <div class="photo-item">
+                  <img src="muffin.jpg.jpg" alt="Photography sample 1" class="photo-img">
+                </div>
+                <div class="photo-item">
+                  <img src="bjkh.png.JPG" alt="Photography sample 2" class="photo-img">
+                </div>
+                <div class="photo-item">
+                  <img src="rubik.png.jpg" alt="Photography sample 3" class="photo-img">
+                </div>
+                <div class="photo-item">
+                  <img src="PHOTO 4.jpg" alt="Photography sample 3" class="photo-img">
+                </div>
+                <div class="photo-item">
+                  <img src="PHOTO5.PNG.jpg" alt="Photography sample 3" class="photo-img">
+                </div>
+                <div class="photo-item">
+                  <img src="PHOTO6.jpg" alt="Photography sample 3" class="photo-img">
+                </div>
+                <!-- Duplicate images for continuous scrolling effect -->
+                <div class="photo-item">
+                  <img src="muffin.jpg.jpg" alt="Photography sample 1" class="photo-img">
+                </div>
+                <div class="photo-item">
+                  <img src="bjkh.png.JPG" alt="Photography sample 2" class="photo-img">
+                </div>
+                <div class="photo-item">
+                  <img src="rubik.png.jpg" alt="Photography sample 3" class="photo-img">
+                </div>
+                <div class="photo-item">
+                  <img src="PHOTO 4.jpg" alt="Photography sample 3" class="photo-img">
+                </div>
+                <div class="photo-item">
+                  <img src="PHOTO5.PNG.jpg" alt="Photography sample 3" class="photo-img">
+                </div>
+                <div class="photo-item">
+                  <img src="PHOTO6.jpg" alt="Photography sample 3" class="photo-img">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  .carousel-track {
-    display: flex;
-    width: calc(300px * 6); /* Width of each item * number of items (including duplicates) */
-    animation: scroll 30s linear infinite;
-  }
+    <!-- Add these styles to your existing CSS -->
+    <style>
+      .photography-carousel {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin-top: 30px;
+      }
 
-  .carousel-track:hover {
-    animation-play-state: paused;
-  }
+      .carousel-container {
+        width: 100%;
+        overflow: hidden;
+      }
 
-  .carousel-track .photo-item {
-    flex: 0 0 300px;
-    padding: 0 15px;
-    box-sizing: border-box;
-  }
+      .carousel-track {
+        display: flex;
+        width: calc(300px * 6);
+        /* Width of each item * number of items (including duplicates) */
+        animation: scroll 30s linear infinite;
+      }
 
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-400px * 3)); /* Width of each item * number of original items */
-    }
-  }
+      .carousel-track:hover {
+        animation-play-state: paused;
+      }
 
-  /* Update existing styles to work with the carousel */
-  .photo-item {
-    background-color: transparent;
-    transition: transform 0.3s ease;
-  }
+      .carousel-track .photo-item {
+        flex: 0 0 300px;
+        padding: 0 15px;
+        box-sizing: border-box;
+      }
 
-  .photo-item:hover {
-    transform: scale(1.05);
-  }
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
 
-  .photo-img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 15px;
-    box-shadow: var(--box-shadow);
-  }
-</style>
+        100% {
+          transform: translateX(calc(-400px * 3));
+          /* Width of each item * number of original items */
+        }
+      }
+
+      /* Update existing styles to work with the carousel */
+      .photo-item {
+        background-color: transparent;
+        transition: transform 0.3s ease;
+      }
+
+      .photo-item:hover {
+        transform: scale(1.05);
+      }
+
+      .photo-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 15px;
+        box-shadow: var(--box-shadow);
+      }
+    </style>
 
     <!-- Future Goals Section -->
     <section id="future-goals" class="fade-in">
@@ -891,6 +917,23 @@
       </div>
     </section>
 
+    <!-- Blender Renders -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">My Blender Renders</h2>
+        <div class="image-grid" style="display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 50px; padding: 30px 0;">
+
+          <!-- Image 1 -->
+          <div
+            style="flex: 0 0 auto; width: 300px; height: 300px; display: flex; justify-content: center; align-items: center; position: relative;">
+            <img src="LaptopPhoto.png"
+              style="width: 200px; transform: rotate(-90deg); position: absolute;">
+          </div>
+
+        </div>
+      </div>
+    </section>
+    
     <!-- Social Section -->
     <section class="social-section fade-in">
       <div class="container">
@@ -926,12 +969,12 @@
     // Mobile Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
     const menu = document.getElementById('menu');
-    
+
     menuToggle.addEventListener('click', () => {
       menu.classList.toggle('active');
       menuToggle.classList.toggle('active');
     });
-    
+
     // Close menu when clicking on a link
     document.querySelectorAll('nav ul li a').forEach(link => {
       link.addEventListener('click', () => {
@@ -939,15 +982,15 @@
         menuToggle.classList.remove('active');
       });
     });
-    
+
     // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+      anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        
+
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
-        
+
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           window.scrollTo({
@@ -957,10 +1000,10 @@
         }
       });
     });
-    
+
     // Back to Top Button
     const backToTop = document.getElementById('backToTop');
-    
+
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
         backToTop.classList.add('active');
@@ -968,45 +1011,46 @@
         backToTop.classList.remove('active');
       }
     });
-    
+
     backToTop.addEventListener('click', () => {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
     });
-    
+
     // Easter Egg
     const quoteContainer = document.getElementById('quoteContainer');
     const easterEggMessage = document.getElementById('easterEggMessage');
-    
+
     quoteContainer.addEventListener('click', () => {
       easterEggMessage.classList.add('active');
-      
+
       setTimeout(() => {
         easterEggMessage.classList.remove('active');
       }, 3000);
     });
-    
+
     // Simple Fade-in Animation
     const fadeElements = document.querySelectorAll('.fade-in');
-    
+
     const fadeInOnScroll = () => {
       fadeElements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
-        
+
         if (elementTop < windowHeight - 100) {
           element.classList.add('visible');
         }
       });
     };
-    
+
     // Run fade animation check on scroll
     window.addEventListener('scroll', fadeInOnScroll);
-    
+
     // Run once on load to check for elements already in view
     window.addEventListener('load', fadeInOnScroll);
   </script>
 </body>
+
 </html>
