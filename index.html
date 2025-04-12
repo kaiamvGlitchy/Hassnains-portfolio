@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -601,9 +605,8 @@
   }
   
   .learning-card .progress {
-    background: linear-gradient(90deg, #74c2a9, #7acafc);
+    background: linear-gradient(90deg, #5aac92, #7acafc);
   }
-
   
   /* Add a small icon to indicate "learning" */
   .learning-card h3::after {
@@ -623,6 +626,32 @@
       padding: 20px;
     }
   }
+
+  @keyframes rubberbounceinright {
+  from {
+    transform: translateX(1000px) scale(0.105);
+  }
+  10% {
+    transform: translateX(0) scale(0.75);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.6);
+  }
+  80% {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.rubberbounceinright {
+  animation: rubberbounceinright 1s ease forwards;
+}
+
 </style>
 
   </style>
@@ -660,7 +689,7 @@
     </section>
 
    <!-- Updated Skills Section with two categories -->
-<section id="skills" class="fade-in">
+<section id="skills" class="">
   <div class="container">
     <h2 class="section-title">My Skills</h2>
     
@@ -673,7 +702,7 @@
             <h3>CapCut</h3>
             <p>3 years of experience creating engaging video content, transitions, and effects.</p>
             <div class="progress-bar">
-              <div class="progress" style="width: 90%;"></div>
+              <div class="progress" style="width: 60%;"></div>
             </div>
           </div>
           
@@ -681,7 +710,7 @@
             <h3>Web Development</h3>
             <p>Basic skills in HTML, CSS, and JavaScript for website creation.</p>
             <div class="progress-bar">
-              <div class="progress" style="width: 40%;"></div>
+              <div class="progress" style="width: 30%;"></div>
             </div>
           </div>
           
@@ -691,7 +720,7 @@
     </div>
     
     <!-- Skills Currently Learning -->
-    <div class="skills-category learning">
+    <div class="skills-category learning" class="rubberbounceinright">
       <h3 class="category-title">What I'm Learning</h3>
       <div class="skills learning-skills">
         <div class="skills-grid">
@@ -699,7 +728,7 @@
             <h3>Blender</h3>
             <p>Learning 3D modeling and animation to enhance my video editing capabilities.</p>
             <div class="progress-bar">
-              <div class="progress learning-progress" style="width: 45%;"></div>
+              <div class="progress learning-progress" style="width: 5%;"></div>
             </div>
           </div>
           
@@ -707,7 +736,7 @@
             <h3>Game Development</h3>
             <p>Currently learning Roblox Studio for beginner game development.</p>
             <div class="progress-bar">
-              <div class="progress learning-progress" style="width: 35%;"></div>
+              <div class="progress learning-progress" style="width: 0%;"></div>
             </div>
           </div>
 
@@ -715,7 +744,7 @@
             <h3>Photography</h3>
             <p>Learning photography for fun!</p>
             <div class="progress-bar">
-              <div class="progress learning-progress" style="width: 35%;"></div>
+              <div class="progress learning-progress" style="width: 7%;"></div>
             </div>
           </div>
           
