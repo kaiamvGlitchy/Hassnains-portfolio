@@ -15,7 +15,7 @@
   <title>Kai's Portfolio</title>
   <meta name="description" content="Professional 3D artist specializing in environmental design, and motion fx.">
   <meta name="keywords"
-    content="3D artist, 3D modeling, Blender, architectural visualization, portfolio, environments, motion FX, product renders">
+    content="Kai, Hassnain, 3D artist, 3D modeling, Blender, architectural visualization, portfolio, environments, motion FX, product renders">
   <link rel="shortcut icon" href="Kai.png" type="image/x-icon">
 
   <style>
@@ -23,15 +23,16 @@
 
     :root {
       --primary-color: #000000;
-      --secondary-color: #151515;
-      --accent-color: #1974FF;
+      --secondary-color: #0d0d0d;
+      --accent-color: #B3B3B3;
       --accent-hover: #458FFF;
       --text-light: #ffffff;
-      --text-muted: #B3B3B3;
+      --text-muted: #6B6B6B;
       --background-color: #000000;
       --surface-color: #1A1A1A;
       --border-color: rgba(255, 255, 255, 0.1);
-      --box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      --box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+      --card-shadow: 0 0px 0px rgba(0, 0, 0, 0);
     }
 
     /* General Styles */
@@ -65,7 +66,7 @@
       left: 0;
       width: var(--scroll-progress);
       height: 2px;
-      background: linear-gradient(90deg, var(--titanium-color), #70A5D6);
+      background: var(--text-muted);
       z-index: 1002;
       transition: width 0.1s ease-out;
     }
@@ -92,10 +93,12 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       transition: all 0.2s ease;
+      color: var(--primary-color);
+      text-decoration: none;
     }
 
     .btn:hover {
-      background: var(--accent-hover);
+      background: var(--text-muted);
       transform: translateY(-1px);
     }
 
@@ -123,10 +126,7 @@
     .logo {
       font-size: 24px;
       font-weight: 700;
-      background: none;
       color: var(--text-light);
-      -webkit-background-clip: unset;
-      background-clip: unset;
     }
 
     nav ul {
@@ -146,8 +146,7 @@
     }
 
     nav ul li a:hover {
-      color: var(--accent-color);
-      background-color: rgba(190, 194, 203, 0.1);
+      color: var(--text-muted);
     }
 
     .menu-toggle {
@@ -193,18 +192,6 @@
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at center, var(--accent-color) 0%, transparent 70%);
-      opacity: 0.1;
-      pointer-events: none;
-    }
-
     .hero-content {
       max-width: 800px;
       margin: 0 auto;
@@ -212,7 +199,6 @@
       z-index: 1;
     }
 
-    /* Updated Hero Title styles */
     .hero h1 {
       font-size: 120px;
       font-weight: 700;
@@ -220,14 +206,6 @@
       margin-bottom: 30px;
       line-height: 1;
       color: var(--text-light);
-      mix-blend-mode: difference;
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .hero h1.video-mask {
-      -webkit-mask-image: url(#hero-mask);
-      mask-image: url(#hero-mask);
-      background: transparent;
     }
 
     .hero p {
@@ -240,7 +218,7 @@
     .about-container {
       background: var(--surface-color);
       border-radius: 20px;
-      border: none;
+      border: 1px solid var(--border-color);
       padding: 60px;
       box-shadow: var(--card-shadow);
       margin-top: 30px;
@@ -249,12 +227,13 @@
     .about-content h3 {
       font-size: 48px;
       margin-bottom: 30px;
-      color: var(--accent-color);
+      color: var(--text-muted);
     }
 
     .about-content p {
       font-size: 20px;
       line-height: 1.8;
+      color: var(--text-muted);
     }
 
     .about-info {
@@ -262,7 +241,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 15px;
       margin-top: 25px;
-      border-top: 1px solid #333;
+      border-top: 1px solid var(--border-color);
       padding-top: 25px;
     }
 
@@ -275,7 +254,7 @@
 
     .info-label {
       font-size: 0.9rem;
-      color: var(--accent-color);
+      color: var(--text-muted);
       margin-bottom: 5px;
     }
 
@@ -293,7 +272,7 @@
     .item-software {
       margin-top: 8px;
       font-size: 0.8rem;
-      color: var(--titanium-color);
+      color: var(--text-muted);
     }
 
     .portfolio-grid {
@@ -309,15 +288,15 @@
       overflow: hidden;
       box-shadow: var(--card-shadow);
       height: 600px;
-      border: none;
+      border: 1px solid var(--border-color);
       background: var(--surface-color);
       cursor: pointer;
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .portfolio-item:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      transform: none;
+      box-shadow: none;
     }
 
     .portfolio-img,
@@ -358,7 +337,7 @@
     .commissions-container {
       background: var(--surface-color);
       border-radius: 20px;
-      border: none;
+      border: 1px solid var(--border-color);
       padding: 60px;
       box-shadow: var(--card-shadow);
     }
@@ -371,7 +350,7 @@
     .commissions-intro h3 {
       font-size: 1.8rem;
       margin-bottom: 20px;
-      color: var(--accent-color);
+      color: var(--text-muted);
     }
 
     .commissions-intro p {
@@ -379,6 +358,7 @@
       line-height: 1.7;
       max-width: 600px;
       margin: 0 auto;
+      color: var(--text-muted);
     }
 
     .pricing-grid {
@@ -393,25 +373,25 @@
       border-radius: 8px;
       padding: 30px;
       text-align: center;
-      border: 1px solid rgba(190, 194, 203, 0.1);
+      border: 1px solid var(--border-color);
       position: relative;
       transition: transform 0.3s ease;
     }
 
     .pricing-card:hover {
-      transform: translateY(-5px);
+      transform: none;
     }
 
     .pricing-card h4 {
       font-size: 1.4rem;
       margin-bottom: 15px;
-      color: var(--accent-color);
+      color: var(--text-muted);
     }
 
     .price {
       font-size: 2rem;
       font-weight: bold;
-      color: var(--accent-color);
+      color: var(--text-muted);
       margin-bottom: 20px;
     }
 
@@ -423,7 +403,7 @@
 
     .pricing-features li {
       padding: 8px 0;
-      border-bottom: 1px solid rgba(190, 194, 203, 0.1);
+      border-bottom: 1px solid var(--border-color);
       font-size: 0.95rem;
     }
 
@@ -433,7 +413,7 @@
 
     .pricing-features li::before {
       content: '✓';
-      color: var(--accent-color);
+      color: var(--text-muted);
       font-weight: bold;
       margin-right: 10px;
     }
@@ -446,7 +426,7 @@
       font-size: 1.8rem;
       text-align: center;
       margin-bottom: 30px;
-      color: var(--accent-color);
+      color: var(--text-muted);
     }
 
     .process-steps {
@@ -463,8 +443,8 @@
     .step-number {
       width: 50px;
       height: 50px;
-      background: linear-gradient(135deg, var(--accent-color), #70A5D6);
-      color: var(--secondary-color);
+      background: var(--text-muted);
+      color: var(--primary-color);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -477,12 +457,13 @@
     .process-step h4 {
       font-size: 1.2rem;
       margin-bottom: 10px;
-      color: var(--accent-color);
+      color: var(--text-light);
     }
 
     .process-step p {
       font-size: 0.95rem;
       line-height: 1.6;
+      color: var(--text-muted);
     }
 
     .commission-cta {
@@ -490,19 +471,20 @@
       padding: 30px;
       background-color: var(--secondary-color);
       border-radius: 8px;
-      border: 1px solid rgba(190, 194, 203, 0.1);
+      border: 1px solid var(--border-color);
     }
 
     .commission-cta h3 {
       font-size: 1.6rem;
       margin-bottom: 15px;
-      color: var(--accent-color);
+      color: var(--text-muted);
     }
 
     .commission-cta p {
       font-size: 1.1rem;
       margin-bottom: 25px;
       line-height: 1.6;
+      color: var(--text-muted);
     }
 
     .contact-methods {
@@ -518,7 +500,7 @@
       padding: 60px;
       border-radius: 20px;
       box-shadow: var(--card-shadow);
-      border: none;
+      border: 1px solid var(--border-color);
     }
 
     .goals-list {
@@ -535,14 +517,14 @@
       font-size: 1.1rem;
       display: flex;
       align-items: center;
-      border: 1px solid rgba(190, 194, 203, 0.1);
+      border: 1px solid var(--border-color);
     }
 
     .goals-list li::before {
       content: '→';
       margin-right: 15px;
       font-size: 1.3rem;
-      color: var(--accent-color);
+      color: var(--text-muted);
     }
 
     /* Social Icons Section */
@@ -567,7 +549,7 @@
       align-items: center;
       gap: 60px;
       padding: 30px 40px;
-      background: var(--gradient-dark);
+      background: var(--surface-color);
       backdrop-filter: blur(15px);
       border-radius: 16px;
       border: 1px solid var(--border-color);
@@ -580,19 +562,18 @@
       width: 50px;
       height: 50px;
       transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
       opacity: 0.8;
+      filter: none;
     }
 
     .social-icon:hover {
       opacity: 1;
-      transform: translateY(-6px) scale(1.1);
-      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.3));
+      transform: none;
     }
 
     /* Footer */
     footer {
-      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+      background: var(--secondary-color);
       color: var(--text-light);
       text-align: center;
       padding: 50px 0 30px;
@@ -625,7 +606,7 @@
     }
 
     .footer-links a:hover {
-      color: var(--accent-color);
+      color: var(--text-muted);
     }
 
     .copyright {
@@ -642,8 +623,8 @@
       right: 30px;
       width: 50px;
       height: 50px;
-      background: linear-gradient(135deg, var(--primary-color), var(--titanium-color));
-      color: var(--text-light);
+      background: var(--text-muted);
+      color: var(--primary-color);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -653,7 +634,7 @@
       cursor: pointer;
       opacity: 0;
       z-index: 999;
-      border: 1px solid rgba(190, 194, 203, 0.1);
+      border: 1px solid var(--border-color);
       transition: opacity 0.3s ease;
     }
 
@@ -686,6 +667,7 @@
       background: var(--surface-color);
       border-radius: 20px;
       padding: 40px;
+      border: 1px solid var(--border-color);
     }
 
     .modal-main-content {
@@ -740,24 +722,25 @@
     }
 
     .modal-tab-btn {
-      background: var(--background-color);
+      background: var(--surface-color);
       border-radius: 980px;
       font-size: 18px;
       font-weight: 500;
       padding: 16px 32px;
-      border: none;
+      border: 1px solid var(--border-color);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       color: var(--text-light);
       cursor: pointer;
     }
 
     .modal-tab-btn:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
+      background: var(--secondary-color);
+      transform: none;
     }
 
     .modal-tab-btn.active {
       background: var(--accent-color);
+      color: var(--primary-color);
     }
 
     .modal-close-btn {
@@ -766,7 +749,7 @@
       right: 40px;
       width: 50px;
       height: 50px;
-      background: var(--secondary-color);
+      background: var(--surface-color);
       color: var(--text-light);
       border-radius: 50%;
       display: flex;
@@ -781,30 +764,8 @@
     }
 
     .modal-close-btn:hover {
-      background: var(--accent-color);
-      transform: rotate(90deg);
-      color: var(--text-dark);
-    }
-
-    /* Update existing gradients and accents */
-    .btn,
-    .section-title::after,
-    .step-number,
-    .back-to-top {
-      background: var(--gradient-accent);
-      color: var(--text-dark);
-    }
-
-    .btn:hover,
-    .back-to-top:hover {
-      box-shadow: 0 6px 25px rgba(6, 182, 212, 0.35);
-    }
-
-    .logo,
-    .hero h1 {
-      background: var(--gradient-accent);
-      -webkit-background-clip: text;
-      background-clip: text;
+      background: var(--secondary-color);
+      transform: none;
     }
 
     /* Responsive modal updates */
@@ -870,47 +831,6 @@
         text-align: center;
       }
 
-      /* Updated intro styles */
-      .portfolio-intro {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: var(--background-color);
-        z-index: 1000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .intro-video {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        object-fit: cover;
-        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .intro-video.to-text {
-        transform: translate(-50%, -50%) scale(0.2);
-        clip-path: path('M60,60 h120 v60 h-120 Z');
-      }
-
-      .hero h1 {
-        opacity: 0;
-        transition: all 0.5s ease;
-      }
-
-      .hero h1.show {
-        opacity: 1;
-      }
-
       .section-title {
         font-size: 48px;
       }
@@ -944,7 +864,7 @@
       }
 
       .modal-image-container {
-        height: 300px; /* Adjust height for smaller screens */
+        height: 300px;
       }
 
       .modal-tabs {
@@ -953,7 +873,7 @@
       }
 
       .modal-tab-btn {
-        max-width: unset; /* Remove max-width for full width buttons */
+        max-width: unset;
       }
     }
 
@@ -991,38 +911,6 @@
       }
     }
 
-    /* Updated intro styles */
-    .portfolio-intro {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: var(--background-color);
-      z-index: 1000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .intro-video {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: cover;
-      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .intro-video.to-text {
-      transform: translate(-50%, -50%) scale(0.2);
-      clip-path: path('M60,60 h120 v60 h-120 Z');
-    }
-
     .section-title,
     .about-container,
     .portfolio-item,
@@ -1030,29 +918,10 @@
     .future-goals {
       animation: fadeIn 0.6s ease-out forwards;
     }
-
-    /* Add SVG mask */
-    .masks {
-      position: absolute;
-      visibility: hidden;
-      pointer-events: none;
-    }
   </style>
 </head>
 
 <body>
-    <!-- Add SVG masks at the start of body -->
-    <svg class="masks">
-      <defs>
-        <clipPath id="hero-mask">
-          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" 
-                font-family="SamsungOne" font-size="120px" font-weight="700">
-            KAI
-          </text>
-        </clipPath>
-      </defs>
-    </svg>
-
   <div class="scroll-progress"></div>
 
   <header>
@@ -1093,7 +962,7 @@
         <div class="about-container">
           <div class="about-content">
             <h3>About me</h3>
-            <h4>Hey, I'm Kai! I create 3D environments.</h4>
+            <h4>Hey, I'm Kai, also known as Hassnain!</h4>
             <p>I love building digital worlds and environments that feel real and tell stories. There's something really
               satisfying about crafting spaces that people want to explore.</p>
             <p>I work mainly in Blender, spending most of my time getting the lighting and materials just right. Good
@@ -1120,17 +989,7 @@
       <div class="container">
         <h2 class="section-title">My Projects</h2>
         
-        <!-- Add intro section -->
-        <div class="portfolio-intro">
-          <video class="intro-video" autoplay muted playsinline>
-            <source src="PortalFX.mp4" type="video/mp4">
-          </video>
-          <h1 class="intro-title">KAI</h1>
-        </div>
-
-        <!-- Existing portfolio grid remains unchanged -->
         <div class="portfolio-grid" id="portfolioGrid">
-
           <div class="portfolio-item" data-project-id="project1">
             <img src="PyramidMythic.png" alt="Fictional Environment" class="portfolio-img">
             <div class="portfolio-overlay">
@@ -1225,6 +1084,7 @@
             <li>Work with teams on bigger creative projects.</li>
             <li>Get better at lighting, texturing, and composition.</li>
             <li>Share my work online and grow my audience.</li>
+            <li>Improve skills in 3D modeling and scene building.</li>
           </ul>
         </div>
       </div>
@@ -1251,7 +1111,6 @@
       </section>
     </nav>
 
-
     <footer>
       <div class="container">
         <div class="footer-content">
@@ -1263,7 +1122,7 @@
             <a href="#future-goals">Vision</a>
           </div>
           <div class="copyright">
-            &copy; 2025 Kai Studio. All rights reserved.
+            &copy; 2025 Hassnain (Kai). All rights reserved.
           </div>
         </div>
       </div>
@@ -1300,7 +1159,6 @@
         initScrollProgress();
         initPortfolioModal(); // New function for the modal
         initScrollAnimations();
-        initPortfolioIntro();
       });
 
       // Scroll Progress Bar function
@@ -1518,54 +1376,6 @@
           observer.observe(element);
           element.style.opacity = '0';
         });
-      }
-
-      function initPortfolioIntro() {
-        const intro = document.querySelector('.portfolio-intro');
-        const video = document.querySelector('.intro-video');
-        const heroTitle = document.querySelector('.hero h1');
-        const body = document.body;
-
-        // Lock scrolling
-        body.style.overflow = 'hidden';
-        heroTitle.style.opacity = '0';
-
-        let animationStarted = false;
-
-        function startAnimation() {
-            if (animationStarted) return;
-            animationStarted = true;
-            
-            // Start zoom animation near end of video
-            setTimeout(() => {
-                video.classList.add('to-text');
-                heroTitle.style.opacity = '1';
-                
-                // Hold for 4 seconds
-                setTimeout(() => {
-                    // Fade out intro
-                    intro.style.opacity = '0';
-                    
-                    // Cleanup
-                    setTimeout(() => {
-                        intro.remove();
-                        body.style.overflow = '';
-                    }, 1000);
-                }, 4000);
-            }, (video.duration * 1000) - 1500);
-        }
-
-        // Handle video events
-        video.addEventListener('loadedmetadata', () => {
-            video.play();
-        });
-
-        video.addEventListener('play', () => {
-            startAnimation();
-        });
-
-        // Fallback in case video doesn't trigger events
-        setTimeout(startAnimation, 1000);
       }
     </script>
 </body>
