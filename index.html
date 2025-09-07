@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J2MV3BVL73"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -22,21 +19,46 @@
   <link rel="shortcut icon" href="Kai.png" type="image/x-icon">
 
   <style>
-:root {
-  --primary-color: #0F172A;
-  --secondary-color: #1E293B;
-  --accent-color: #3B82F6;
-  --titanium-color: #60A5FA;
-  --text-light: #F8FAFC;
-  --text-dark: #1E293B;
-  --background-color: #0c1020;
-  --surface-color: #334155;
-  --border-color: rgba(148, 163, 184, 0.1);
-  --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  --scroll-progress: 0%;
-}
+    @import url('https://fonts.cdnfonts.com/css/samsungone');
 
-    /* Scroll Progress Bar */
+    :root {
+      --primary-color: #000000;
+      --secondary-color: #151515;
+      --accent-color: #1974FF;
+      --accent-hover: #458FFF;
+      --text-light: #ffffff;
+      --text-muted: #B3B3B3;
+      --background-color: #000000;
+      --surface-color: #1A1A1A;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'SamsungOne', -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing: -0.02em;
+      background-color: var(--background-color);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
     .scroll-progress {
       position: fixed;
       top: 0;
@@ -48,32 +70,41 @@
       transition: width 0.1s ease-out;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    .section-title {
+      font-size: 64px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 80px;
+      text-align: center;
+      color: var(--text-light);
     }
 
-   body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-light);
-  line-height: 1.6;
-  overflow-x: hidden;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+    .section-title::after {
+      display: none;
     }
 
-    /* Header */
+    .btn {
+      background: var(--accent-color);
+      padding: 20px 40px;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Header & Navigation */
     header {
-      background-color: var(--secondary-color);
+      background: rgba(0, 0, 0, 0.8);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border-color);
       color: var(--text-light);
       padding: 20px 0;
       position: fixed;
@@ -81,7 +112,6 @@
       top: 0;
       z-index: 1000;
       box-shadow: var(--box-shadow);
-      backdrop-filter: blur(10px);
     }
 
     .header-content {
@@ -91,10 +121,12 @@
     }
 
     .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-      color: var(--titanium-color);
+      font-size: 24px;
+      font-weight: 700;
+      background: none;
+      color: var(--text-light);
+      -webkit-background-clip: unset;
+      background-clip: unset;
     }
 
     nav ul {
@@ -106,7 +138,7 @@
     nav ul li a {
       text-decoration: none;
       color: var(--text-light);
-      font-size: 1rem;
+      font-size: 18px;
       font-weight: 500;
       padding: 8px 15px;
       border-radius: 4px;
@@ -114,7 +146,7 @@
     }
 
     nav ul li a:hover {
-      color: var(--titanium-color);
+      color: var(--accent-color);
       background-color: rgba(190, 194, 203, 0.1);
     }
 
@@ -135,56 +167,43 @@
       border-radius: 2px;
     }
 
-  main {
-  margin-top: 80px;
-  padding: 20px 0 0 0;
-  flex: 1;
-}
+    /* Main Content */
+    main {
+      margin-top: 80px;
+      padding: 20px 0 0 0;
+      flex: 1;
+    }
 
     section {
       padding: 80px 0;
     }
 
-     .section-title {
-      font-size: 2.2rem;
-      margin-bottom: 40px;
+    /* Hero Section */
+    .hero {
+      padding-top: 120px;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--background-color);
+      color: var(--text-light);
       text-align: center;
-      color: var(--titanium-color);
+      padding: 0;
+      margin-top: -80px;
       position: relative;
+      overflow: hidden;
     }
 
-    .section-title::after {
+    .hero::before {
       content: '';
-      display: block;
-      width: 80px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--titanium-color), #70A5D6);
-      margin: 15px auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at center, var(--accent-color) 0%, transparent 70%);
+      opacity: 0.1;
+      pointer-events: none;
     }
-
-   .hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  background: var(--primary-color);
-  color: var(--text-light);
-  text-align: center;
-  padding: 0;
-  margin-top: -80px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--primary-color);
-  pointer-events: none;
-}
 
     .hero-content {
       max-width: 800px;
@@ -193,65 +212,49 @@
       z-index: 1;
     }
 
+    /* Updated Hero Title styles */
     .hero h1 {
-      font-size: 4.5rem;
+      font-size: 120px;
       font-weight: 700;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
-      color: var(--titanium-color);
+      letter-spacing: -0.04em;
+      margin-bottom: 30px;
+      line-height: 1;
+      color: var(--text-light);
+      mix-blend-mode: difference;
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero h1.video-mask {
+      -webkit-mask-image: url(#hero-mask);
+      mask-image: url(#hero-mask);
+      background: transparent;
     }
 
     .hero p {
-      font-size: 1.8rem;
-      margin-bottom: 40px;
-      color: var(--text-light);
-      letter-spacing: 1px;
-      font-weight: 300;
+      font-size: 36px;
+      color: var(--text-muted);
+      font-weight: 500;
     }
 
-   .btn {
-  display: inline-block;
-  padding: 14px 32px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  text-align: center;
-  cursor: pointer;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-  background: linear-gradient(135deg, var(--accent-color) 0%, var(--titanium-color) 100%);
-  color: white;
-  border: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-  background: linear-gradient(135deg, var(--titanium-color) 0%, var(--accent-color) 100%);
-}
-   .about-container {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  border-radius: 12px;
-  box-shadow: var(--box-shadow);
-  margin-top: 30px;
-  padding: 40px;
-  border: 1px solid var(--border-color);
-  backdrop-filter: blur(10px);
-}
-
+    /* About Section */
+    .about-container {
+      background: var(--surface-color);
+      border-radius: 20px;
+      border: none;
+      padding: 60px;
+      box-shadow: var(--card-shadow);
+      margin-top: 30px;
+    }
 
     .about-content h3 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: var(--titanium-color);
+      font-size: 48px;
+      margin-bottom: 30px;
+      color: var(--accent-color);
     }
 
     .about-content p {
-      margin-bottom: 15px;
-      line-height: 1.7;
-      font-size: 1.05rem;
+      font-size: 20px;
+      line-height: 1.8;
     }
 
     .about-info {
@@ -279,30 +282,12 @@
     .info-value {
       font-size: 1.1rem;
       font-weight: bold;
-      color: var(--titanium-color);
+      color: var(--text-light);
     }
 
     /* Portfolio Section */
     .portfolio-section {
       padding: 80px 0;
-    }
-
-    .subcategory-title {
-      font-size: 1.5rem;
-      color: var(--accent-color);
-      margin: 40px 0 20px;
-      text-align: center;
-      padding-bottom: 15px;
-      position: relative;
-    }
-
-    .subcategory-title::after {
-      content: '';
-      display: block;
-      width: 50px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent-color), transparent);
-      margin: 10px auto 0;
     }
 
     .item-software {
@@ -313,34 +298,29 @@
 
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
       margin-top: 30px;
     }
 
-   .portfolio-item {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: var(--box-shadow);
-  height: 300px;
-  border: 1px solid var(--border-color);
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  background: var(--secondary-color);
-}
-
-.portfolio-item:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-    .portfolio-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .portfolio-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      height: 600px;
+      border: none;
+      background: var(--surface-color);
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+    .portfolio-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .portfolio-img,
     .portfolio-video {
       width: 100%;
       height: 100%;
@@ -348,91 +328,40 @@
     }
 
     .portfolio-overlay {
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.7);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(26, 26, 26, 0.9), transparent);
-      padding: 20px;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
+      opacity: 0;
+      transition: all 0.4s ease;
     }
 
     .portfolio-item:hover .portfolio-overlay {
-      transform: translateY(0);
+      opacity: 1;
     }
 
     .portfolio-title {
-      font-size: 1.2rem;
-      margin-bottom: 5px;
-      color: var(--titanium-color);
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 15px;
     }
 
     .portfolio-category {
-      font-size: 0.9rem;
-      color: var(--accent-color);
+      font-size: 18px;
     }
 
-    /* Gallery Filter */
-    .gallery-filter {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 40px;
-    }
-
-    .filter-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .filter-btn {
-      background-color: var(--primary-color);
-      color: var(--text-light);
-      border: none;
-      padding: 10px 20px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
-
-    .filter-btn:hover {
-      background-color: var(--titanium-color);
-      color: var(--secondary-color);
-    }
-
-    .filter-btn.active {
-      background-color: var(--titanium-color);
-      color: var(--secondary-color);
-    }
-
-    .filter-count {
-      display: inline-block;
-      background-color: rgba(190, 194, 203, 0.2);
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      font-size: 0.7rem;
-      line-height: 20px;
-      text-align: center;
-      margin-left: 8px;
-    }
-
-    .filter-btn.active .filter-count {
-      background-color: rgba(26, 26, 26, 0.5);
-    }
-
+    /* Commissions Section */
     .commissions-container {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  border-radius: 12px;
-  box-shadow: var(--box-shadow);
-  padding: 40px;
-  border: 1px solid var(--border-color);
-  backdrop-filter: blur(10px);
-}
+      background: var(--surface-color);
+      border-radius: 20px;
+      border: none;
+      padding: 60px;
+      box-shadow: var(--card-shadow);
+    }
 
     .commissions-intro {
       text-align: center;
@@ -442,7 +371,7 @@
     .commissions-intro h3 {
       font-size: 1.8rem;
       margin-bottom: 20px;
-      color: var(--titanium-color);
+      color: var(--accent-color);
     }
 
     .commissions-intro p {
@@ -476,13 +405,13 @@
     .pricing-card h4 {
       font-size: 1.4rem;
       margin-bottom: 15px;
-      color: var(--titanium-color);
+      color: var(--accent-color);
     }
 
     .price {
       font-size: 2rem;
       font-weight: bold;
-      color: var(--titanium-color);
+      color: var(--accent-color);
       margin-bottom: 20px;
     }
 
@@ -504,7 +433,7 @@
 
     .pricing-features li::before {
       content: '✓';
-      color: var(--titanium-color);
+      color: var(--accent-color);
       font-weight: bold;
       margin-right: 10px;
     }
@@ -517,7 +446,7 @@
       font-size: 1.8rem;
       text-align: center;
       margin-bottom: 30px;
-      color: var(--titanium-color);
+      color: var(--accent-color);
     }
 
     .process-steps {
@@ -534,7 +463,7 @@
     .step-number {
       width: 50px;
       height: 50px;
-      background: linear-gradient(135deg, var(--titanium-color), #70A5D6);
+      background: linear-gradient(135deg, var(--accent-color), #70A5D6);
       color: var(--secondary-color);
       border-radius: 50%;
       display: flex;
@@ -548,7 +477,7 @@
     .process-step h4 {
       font-size: 1.2rem;
       margin-bottom: 10px;
-      color: var(--titanium-color);
+      color: var(--accent-color);
     }
 
     .process-step p {
@@ -567,7 +496,7 @@
     .commission-cta h3 {
       font-size: 1.6rem;
       margin-bottom: 15px;
-      color: var(--titanium-color);
+      color: var(--accent-color);
     }
 
     .commission-cta p {
@@ -583,14 +512,15 @@
       flex-wrap: wrap;
     }
 
-.future-goals {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: var(--box-shadow);
-  border: 1px solid var(--border-color);
-  backdrop-filter: blur(10px);
-}
+    /* Future Goals Section */
+    .future-goals {
+      background: var(--surface-color);
+      padding: 60px;
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      border: none;
+    }
+
     .goals-list {
       list-style: none;
       padding: 0;
@@ -612,23 +542,62 @@
       content: '→';
       margin-right: 15px;
       font-size: 1.3rem;
-      color: var(--titanium-color);
+      color: var(--accent-color);
     }
 
-    /* Social Section */
+    /* Social Icons Section */
     .social-section {
       text-align: center;
       font-size: 17px;
       padding: 80px 0;
     }
 
- footer {
-  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-  color: var(--text-light);
-  text-align: center;
-  padding: 50px 0 30px;
-  margin-top: 0;
-}
+    .social-icons-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .social-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      padding: 30px 40px;
+      background: var(--gradient-dark);
+      backdrop-filter: blur(15px);
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--card-shadow);
+      width: 400px;
+      height: 110px;
+    }
+
+    .social-icon {
+      width: 50px;
+      height: 50px;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+      opacity: 0.8;
+    }
+
+    .social-icon:hover {
+      opacity: 1;
+      transform: translateY(-6px) scale(1.1);
+      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.3));
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+      color: var(--text-light);
+      text-align: center;
+      padding: 50px 0 30px;
+      margin-top: 0;
+    }
 
     .footer-content {
       display: flex;
@@ -646,31 +615,17 @@
     }
 
     .footer-links a {
-     text-decoration: none;
-    color: var(--text-light);
-    font-size: 1rem;
-    font-weight: 500;
-    padding: 8px 15px;
-    border-radius: 4px;
+      text-decoration: none;
+      color: var(--text-light);
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 4px;
       transition: color 0.3s ease;
     }
 
     .footer-links a:hover {
-      color: var(--titanium-color);
-    }
-
-    .footer-contact {
-      margin: 20px 0;
-      padding: 15px 30px;
-      background: linear-gradient(135deg, rgba(45, 45, 45, 0.7), rgba(45, 45, 45, 0.3));
-      border-radius: 30px;
-      border: 1px solid rgba(190, 194, 203, 0.1);
-    }
-
-    .footer-contact a {
-      color: var(--titanium-color);
-      text-decoration: none;
-      font-weight: 500;
+      color: var(--accent-color);
     }
 
     .copyright {
@@ -704,6 +659,181 @@
 
     .back-to-top.active {
       opacity: 1;
+    }
+
+    /* Modal Styles - Revert and Fix */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(10, 17, 33, 0.98);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .modal.show {
+      opacity: 1;
+    }
+
+    .modal-content {
+      max-width: 1800px;
+      margin: 2vh auto;
+      background: var(--surface-color);
+      border-radius: 20px;
+      padding: 40px;
+    }
+
+    .modal-main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .modal-image-container {
+      height: 70vh;
+      background: var(--background-color);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .modal-description {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 30px;
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      overflow-y: auto;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+
+    .modal-description.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    .modal-tab-btn {
+      background: var(--background-color);
+      border-radius: 980px;
+      font-size: 18px;
+      font-weight: 500;
+      padding: 16px 32px;
+      border: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--text-light);
+      cursor: pointer;
+    }
+
+    .modal-tab-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .modal-tab-btn.active {
+      background: var(--accent-color);
+    }
+
+    .modal-close-btn {
+      position: fixed;
+      top: 30px;
+      right: 40px;
+      width: 50px;
+      height: 50px;
+      background: var(--secondary-color);
+      color: var(--text-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--box-shadow);
+      border: 1px solid var(--border-color);
+      z-index: 1002;
+    }
+
+    .modal-close-btn:hover {
+      background: var(--accent-color);
+      transform: rotate(90deg);
+      color: var(--text-dark);
+    }
+
+    /* Update existing gradients and accents */
+    .btn,
+    .section-title::after,
+    .step-number,
+    .back-to-top {
+      background: var(--gradient-accent);
+      color: var(--text-dark);
+    }
+
+    .btn:hover,
+    .back-to-top:hover {
+      box-shadow: 0 6px 25px rgba(6, 182, 212, 0.35);
+    }
+
+    .logo,
+    .hero h1 {
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    /* Responsive modal updates */
+    @media (max-width: 768px) {
+      .modal-content {
+        padding: 20px;
+      }
+
+      .modal-image-container {
+        height: 50vh;
+      }
+
+      .modal-tabs {
+        gap: 10px;
+      }
+
+      .modal-tab-btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+        min-width: 120px;
+      }
+
+      .modal-close-btn {
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+      }
     }
 
     /* Responsive Styles */
@@ -740,16 +870,49 @@
         text-align: center;
       }
 
-      .hero h1 {
-        font-size: 3rem;
+      /* Updated intro styles */
+      .portfolio-intro {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--background-color);
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
-      .hero p {
-        font-size: 1.4rem;
+      .intro-video {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: cover;
+        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .intro-video.to-text {
+        transform: translate(-50%, -50%) scale(0.2);
+        clip-path: path('M60,60 h120 v60 h-120 Z');
+      }
+
+      .hero h1 {
+        opacity: 0;
+        transition: all 0.5s ease;
+      }
+
+      .hero h1.show {
+        opacity: 1;
       }
 
       .section-title {
-        font-size: 2rem;
+        font-size: 48px;
       }
 
       .portfolio-grid {
@@ -773,6 +936,25 @@
         flex-direction: column;
         align-items: center;
       }
+
+      /* Modal Responsive */
+      .modal-content {
+        width: 95%;
+        padding: 15px;
+      }
+
+      .modal-image-container {
+        height: 300px; /* Adjust height for smaller screens */
+      }
+
+      .modal-tabs {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .modal-tab-btn {
+        max-width: unset; /* Remove max-width for full width buttons */
+      }
     }
 
     @media (min-width: 769px) and (max-width: 1024px) {
@@ -781,189 +963,96 @@
       }
     }
 
-    /* Fullscreen Modal */
-    .fullscreen-modal {
+    /* Animation enhancements */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        transform: scale(0.95);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Updated intro styles */
+    .portfolio-intro {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.95);
-      z-index: 9999;
+      height: 100vh;
+      background: var(--background-color);
+      z-index: 1000;
       display: flex;
       justify-content: center;
       align-items: center;
-      opacity: 0;
+    }
+
+    .intro-video {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: cover;
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .intro-video.to-text {
+      transform: translate(-50%, -50%) scale(0.2);
+      clip-path: path('M60,60 h120 v60 h-120 Z');
+    }
+
+    .section-title,
+    .about-container,
+    .portfolio-item,
+    .commissions-container,
+    .future-goals {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    /* Add SVG mask */
+    .masks {
+      position: absolute;
       visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      padding: 20px;
+      pointer-events: none;
     }
-
-    .fullscreen-modal.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .fullscreen-content {
-      position: relative;
-      max-width: 90vw;
-      max-height: 90vh;
-      background-color: var(--primary-color);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-      border: 1px solid rgba(190, 194, 203, 0.2);
-    }
-
-    .fullscreen-media {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
-    .fullscreen-close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 32px;
-      color: #fff;
-      cursor: pointer;
-      z-index: 10;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.7);
-    }
-
-    .fullscreen-info {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-      padding: 30px;
-      color: white;
-    }
-
-    .fullscreen-title {
-      font-size: 1.5rem;
-      margin-bottom: 5px;
-      color: var(--titanium-color);
-    }
-
-    .fullscreen-category {
-      font-size: 1rem;
-      opacity: 0.8;
-    }
-
-    .fullscreen-media-container {
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-
-    body.modal-open {
-      overflow: hidden;
-    }
-
-    /* Add this CSS to your existing portfolio stylesheet */
-
-    .social-icons-section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      padding: 60px 20px;
-      margin: 40px 0;
-    }
-
-   .social-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 60px;
-  padding: 30px 40px;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  border: 1px solid var(--border-color);
-  box-shadow: var(--box-shadow);
-  width: 400px;
-  height: 110px;
-}
-
-    .social-icon {
-      width: 60px;
-      height: 60px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-    }
-
-    .social-icon:hover {
-      transform: translateY(-8px) scale(1.1);
-      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.3));
-    }
-
-    /* Individual hover effects for each platform */
-    a[aria-label="Discord"]:hover .social-icon {
-      filter: drop-shadow(0 12px 24px rgba(114, 137, 218, 0.5));
-    }
-
-    a[aria-label="Instagram"]:hover .social-icon {
-      filter: drop-shadow(0 12px 24px rgba(225, 48, 108, 0.5));
-    }
-
-    a[aria-label="Gmail"]:hover .social-icon {
-      filter: drop-shadow(0 12px 24px rgba(212, 70, 56, 0.5));
-    }
-
-    /* Responsive design */
-    @media (max-width: 768px) {
-      .social-container {
-        gap: 20px;
-        padding: 20px 30px;
-      }
-
-      .social-icon {
-        width: 50px;
-        height: 50px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .social-container {
-        gap: 15px;
-        padding: 15px 20px;
-      }
-
-      .social-icon {
-        width: 45px;
-        height: 45px;
-      }
-    }
-
-    .social-section {
-  text-align: center;
-  padding: 80px 0;
-}
-
-.social-icons-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 20px;
-  margin: 0;
-}
   </style>
 </head>
 
 <body>
-  <!-- Scroll Progress Bar -->
+    <!-- Add SVG masks at the start of body -->
+    <svg class="masks">
+      <defs>
+        <clipPath id="hero-mask">
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" 
+                font-family="SamsungOne" font-size="120px" font-weight="700">
+            KAI
+          </text>
+        </clipPath>
+      </defs>
+    </svg>
+
   <div class="scroll-progress"></div>
 
   <header>
@@ -989,7 +1078,6 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
     <section class="hero" id="hero">
       <div class="container">
         <div class="hero-content">
@@ -999,32 +1087,28 @@
       </div>
     </section>
 
-    <!-- About Section -->
     <section id="about">
       <div class="container">
         <h2 class="section-title">About Me</h2>
         <div class="about-container">
           <div class="about-content">
-            <h3>My Approach</h3>
-            <h4>Hi, I'm Kai! I create 3D art and visuals.</h4>
-            <p>I focus on making beautiful 3D environments and motion effects. I love blending realism with storytelling
-              in my work.</p>
-            <p>I use Blender to create both realistic and stylized 3D visuals. I pay special attention to lighting,
-              materials, and composition to make my work stand out.</p>
-            <p>I'm always learning and improving my skills to deliver amazing 3D visuals for the people I work with.</p>
+            <h3>About me</h3>
+            <h4>Hey, I'm Kai! I create 3D environments.</h4>
+            <p>I love building digital worlds and environments that feel real and tell stories. There's something really
+              satisfying about crafting spaces that people want to explore.</p>
+            <p>I work mainly in Blender, spending most of my time getting the lighting and materials just right. Good
+              composition is everything when you're trying to make an environment that actually feels alive.</p>
+            <p>I'm constantly learning new ways to make my environments better and more engaging for whatever project
+              I'm working on.</p>
 
             <div class="about-info">
               <div class="info-item">
                 <span class="info-label">Specialties</span>
-                <span class="info-value">3D Visualization</span>
+                <span class="info-value">Environment Artist</span>
               </div>
               <div class="info-item">
                 <span class="info-label">Software</span>
                 <span class="info-value">Blender</span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">Experience</span>
-                <span class="info-value">2 Months</span>
               </div>
             </div>
           </div>
@@ -1032,14 +1116,22 @@
       </div>
     </section>
 
-    <!-- Renders Section -->
     <section id="renders" class="portfolio-section">
       <div class="container">
         <h2 class="section-title">My Projects</h2>
+        
+        <!-- Add intro section -->
+        <div class="portfolio-intro">
+          <video class="intro-video" autoplay muted playsinline>
+            <source src="PortalFX.mp4" type="video/mp4">
+          </video>
+          <h1 class="intro-title">KAI</h1>
+        </div>
 
-        <div class="portfolio-grid">
-          <!-- All items in one grid: Images and Videos -->
-          <div class="portfolio-item">
+        <!-- Existing portfolio grid remains unchanged -->
+        <div class="portfolio-grid" id="portfolioGrid">
+
+          <div class="portfolio-item" data-project-id="project1">
             <img src="PyramidMythic.png" alt="Fictional Environment" class="portfolio-img">
             <div class="portfolio-overlay">
               <h3 class="portfolio-title">Fictional environment</h3>
@@ -1048,50 +1140,28 @@
             </div>
           </div>
 
-          <div class="portfolio-item">
-            <img src="FlowerBouquetGrayscale.png" alt="Flower Bouquet" class="portfolio-img">
+          <div class="portfolio-item" data-project-id="project2">
+            <img src="another_project_final.png" alt="Another Project" class="portfolio-img">
             <div class="portfolio-overlay">
-              <h3 class="portfolio-title">Flower Bouquet</h3>
-              <p class="portfolio-category">Environmental Design</p>
+              <h3 class="portfolio-title">Sci-Fi Corridor</h3>
+              <p class="portfolio-category">Architectural Visualization</p>
               <p class="item-software">Created with Blender</p>
             </div>
           </div>
-
-          <div class="portfolio-item">
-            <img src="RuralHumidMountains.png" alt="Rural Humid Mountains" class="portfolio-img">
-            <div class="portfolio-overlay">
-              <h3 class="portfolio-title">Rural Mountains</h3>
-              <p class="portfolio-category">Environmental Design</p>
-              <p class="item-software">Created with Blender</p>
-            </div>
-          </div>
-
-          <div class="portfolio-item">
-            <video class="portfolio-video" loop muted>
-              <source src="PortalFx.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <div class="portfolio-overlay">
-              <h3 class="portfolio-title">Portal Vfx</h3>
-              <p class="portfolio-category">Environmental Design</p>
-              <p class="item-software">Created with Blender</p>
-            </div>
-          </div>
-
+  
         </div>
       </div>
     </section>
 
-    <!-- Commissions Section -->
     <section id="commissions">
       <div class="container">
         <h2 class="section-title">Commissions</h2>
         <div class="commissions-container">
           <div class="commissions-intro">
             <h3>Let's Work Together</h3>
-            <p>I’m open for commissioned 3D artwork and visualization projects. Whether you’re envisioning epic fantasy
-              landscapes, scenes straight from your imagination, or hyper-realistic visuals — I’m here to bring your
-              ideas to life with detail and creativity.
+            <p>I'm open for commissioned 3D environment art — whether you're dreaming up fantasy worlds, sci-fi vibes,
+              or realistic nature scenes. If you’ve got an idea, I’d love to help bring it to life with detail, mood,
+              and a bit of magic.
           </div>
 
           <div class="pricing-grid">
@@ -1099,11 +1169,11 @@
               <h4>Environmental Renders</h4>
               <div class="price">$50 - $150</div>
               <ul class="pricing-features">
-                <li>Epic 3D landscapes tailored to your vision</li>
-                <li>Fantasy, sci-fi, or Photo-Realistic scenes</li>
-                <li>Bold visuals with cinematic flair</li>
-                <li>High-resolution delivery In your preferred format</li>
-                <li>Up to 3 revisions to fine-tune your world</li>
+                <li>Custom 3D landscapes built around your vision</li>
+                <li>Fantasy, sci-fi, stylized, or realistic — your pick</li>
+                <li>Cinematic renders with rich detail</li>
+                <li>High-res delivery in whatever format you need</li>
+                <li>Includes up to 3 revisions</li>
               </ul>
             </div>
           </div>
@@ -1114,29 +1184,29 @@
               <div class="process-step">
                 <div class="step-number">1</div>
                 <h4>Contact</h4>
-                <p>Reach out via Discord or email with your project details and requirements.</p>
+                <p>Hit me up on Discord or email with your idea or brief.</p>
               </div>
               <div class="process-step">
                 <div class="step-number">2</div>
                 <h4>Quote</h4>
-                <p>I'll provide a detailed quote based on project scope and timeline.</p>
+                <p>I’ll send you a custom quote based on what you're looking for.</p>
               </div>
               <div class="process-step">
                 <div class="step-number">3</div>
                 <h4>Creation</h4>
-                <p>I'll create your 3D artwork with regular updates and progress shots.</p>
+                <p>I’ll get to work and keep you updated with progress shots.</p>
               </div>
               <div class="process-step">
                 <div class="step-number">4</div>
                 <h4>Delivery</h4>
-                <p>Final files delivered in your preferred format with full commercial rights.</p>
+                <p>You’ll get the final render in your format of choice — ready to use.</p>
               </div>
             </div>
           </div>
 
           <div class="commission-cta">
             <h3>Ready to Start Your Project?</h3>
-            <p>Contact me to discuss your vision and get a custom quote for your 3D project.</p>
+            <p>Let’s make something cool. Reach out anytime and we’ll figure out the details together.</p>
             <div class="contact-methods">
               <a href="#socialsection" class="btn">My Socials</a>
             </div>
@@ -1145,7 +1215,6 @@
       </div>
     </section>
 
-    <!-- Future Goals Section -->
     <section id="future-goals">
       <div class="container">
         <h2 class="section-title">Vision & Objectives</h2>
@@ -1161,102 +1230,28 @@
       </div>
     </section>
 
+    <nav id="socialsection">
+      <section class="social-section">
+        <div class="container">
+          <h2 class="section-title">Let's Connect</h2>
+          <div class="social-icons-section">
+            <div class="social-container">
+              <a href="https://discord.com/users/kaxden" target="_blank" aria-label="Discord">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg" alt="Discord"
+                  class="social-icon" width="24" height="24">
+              </a>
 
-    <!-- Social Section -->
-<nav id="socialsection">
-   <!-- Social Section with Title -->
-<section id="socialsection" class="social-section">
-  <div class="container">
-    <h2 class="section-title">Let's Connect</h2>
-    <div class="social-icons-section">
-      <div class="social-container">
-        <!-- Discord - Retro Style -->
-        <a href="https://discord.com/users/kaxden" target="_blank" aria-label="Discord">
-          <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <!-- Background -->
-            <rect x="5" y="5" width="90" height="90" rx="15" fill="#7289da" stroke="#ffffff" stroke-width="2" />
-            <!-- Inner border -->
-            <rect x="10" y="10" width="80" height="80" rx="10" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.5" />
-            <!-- Discord face -->
-            <rect x="15" y="20" width="70" height="60" rx="8" fill="#ffffff" />
-            <!-- Eyes -->
-            <circle cx="30" cy="40" r="8" fill="#7289da" />
-            <circle cx="70" cy="40" r="8" fill="#7289da" />
-            <!-- Pupils -->
-            <circle cx="32" cy="38" r="3" fill="#ffffff" />
-            <circle cx="72" cy="38" r="3" fill="#ffffff" />
-            <!-- Smile -->
-            <rect x="40" y="55" width="20" height="4" rx="2" fill="#7289da" />
-            <!-- Details -->
-            <rect x="20" y="25" width="60" height="2" fill="#7289da" opacity="0.3" />
-            <rect x="20" y="70" width="60" height="2" fill="#7289da" opacity="0.3" />
-          </svg>
-        </a>
-
-        <!-- Instagram - Retro Style -->
-        <a href="https://instagram.com/kai.vixuals" target="_blank" aria-label="Instagram">
-          <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <!-- Background -->
-            <rect x="5" y="5" width="90" height="90" rx="15" fill="#E1306C" stroke="#ffffff" stroke-width="2" />
-            <!-- Inner border -->
-            <rect x="10" y="10" width="80" height="80" rx="10" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.5" />
-            <!-- Camera body -->
-            <rect x="15" y="15" width="70" height="70" rx="8" fill="#ffffff" />
-            <!-- Lens outer ring -->
-            <circle cx="50" cy="50" r="25" fill="#E1306C" stroke="#ffffff" stroke-width="2" />
-            <!-- Lens inner ring -->
-            <circle cx="50" cy="50" r="18" fill="#ffffff" />
-            <!-- Lens center -->
-            <circle cx="50" cy="50" r="12" fill="#E1306C" />
-            <!-- Lens inner detail -->
-            <circle cx="50" cy="50" r="6" fill="#ffffff" />
-            <!-- Viewfinder -->
-            <rect x="70" y="20" width="12" height="12" rx="2" fill="#E1306C" stroke="#ffffff" stroke-width="1" />
-            <rect x="72" y="22" width="8" height="8" rx="1" fill="#ffffff" />
-            <!-- Details -->
-            <rect x="20" y="75" width="60" height="3" rx="1" fill="#E1306C" opacity="0.5" />
-            <rect x="25" y="20" width="3" height="3" fill="#E1306C" />
-            <rect x="72" y="20" width="3" height="3" fill="#E1306C" />
-          </svg>
-        </a>
-
-        <!-- Gmail - Retro Style -->
-        <a href="mailto:kai@amvnovan.com" aria-label="Gmail">
-          <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <!-- Background -->
-            <rect x="5" y="5" width="90" height="90" rx="15" fill="#D44638" stroke="#ffffff" stroke-width="2" />
-
-            <!-- Inner border -->
-            <rect x="10" y="10" width="80" height="80" rx="10" fill="none" stroke="#ffffff" stroke-width="1"
-              opacity="0.5" />
-
-            <!-- Envelope base -->
-            <rect x="15" y="25" width="70" height="50" rx="5" fill="#ffffff" stroke="#D44638" stroke-width="1" />
-
-            <!-- Envelope flap -->
-            <polygon points="15,25 50,50 85,25" fill="#D44638" stroke="#ffffff" stroke-width="1" />
-
-            <!-- Envelope fold lines -->
-            <line x1="15" y1="30" x2="40" y2="45" stroke="#D44638" stroke-width="2" />
-            <line x1="85" y1="30" x2="60" y2="45" stroke="#D44638" stroke-width="2" />
-
-            <!-- @ symbol -->
-            <circle cx="50" cy="55" r="12" fill="none" stroke="#D44638" stroke-width="3" />
-            <circle cx="50" cy="55" r="6" fill="#D44638" />
-            <circle cx="50" cy="55" r="3" fill="#ffffff" />
-
-            <!-- Details -->
-            <rect x="20" y="20" width="60" height="2" fill="#ffffff" opacity="0.7" />
-            <rect x="20" y="78" width="60" height="2" fill="#ffffff" opacity="0.7" />
-          </svg>
-        </a>
-      </div>
-       </div>
-</nav>
-    </section>
+              <a href="mailto:kai@amvnovan.com" aria-label="Gmail">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Gmail" class="social-icon"
+                  width="24" height="24">
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </nav>
 
 
-    <!-- Footer -->
     <footer>
       <div class="container">
         <div class="footer-content">
@@ -1274,46 +1269,51 @@
       </div>
     </footer>
 
-    <!-- Back to Top Button -->
     <div class="back-to-top" id="backToTop">↑</div>
 
-    <!-- Fullscreen Modal -->
-    <div class="fullscreen-modal" id="fullscreenModal">
-      <div class="fullscreen-close">&times;</div>
-      <div class="fullscreen-content">
-        <div class="fullscreen-media-container"></div>
-        <div class="fullscreen-info">
-          <div class="fullscreen-title"></div>
-          <div class="fullscreen-category"></div>
+    <div id="projectModal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close-btn">&times;</span>
+        <div class="modal-main-content">
+          <div class="modal-image-container">
+            <img id="modalImage" src="" alt="Project Image" class="modal-image">
+            <p id="modalDescription" class="modal-description"></p>
+          </div>
+          <div class="modal-tabs">
+            <button class="modal-tab-btn active" data-tab-type="final">Final</button>
+            <button class="modal-tab-btn" data-tab-type="raw">Raw</button>
+            <button class="modal-tab-btn" data-tab-type="clay">Clay</button>
+            <button class="modal-tab-btn" data-tab-type="wireframe">Wireframe</button>
+            <button class="modal-tab-btn" data-tab-type="description">Description</button>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- JavaScript -->
+
     <script>
-      // Simple initialization
+      // Initializing all page functionalities
       document.addEventListener('DOMContentLoaded', function () {
         initMobileMenu();
         initBackToTop();
         initSmoothScrolling();
-        initPortfolioFilter();
         initScrollProgress();
-        initVideoAutoPlay();
-        initFullscreenModal();
+        initPortfolioModal(); // New function for the modal
+        initScrollAnimations();
+        initPortfolioIntro();
       });
 
-      // Scroll Progress Bar
+      // Scroll Progress Bar function
       function initScrollProgress() {
         window.addEventListener('scroll', () => {
           const scrollTop = window.pageYOffset;
           const docHeight = document.body.offsetHeight - window.innerHeight;
           const scrollPercent = (scrollTop / docHeight) * 100;
-
           document.documentElement.style.setProperty('--scroll-progress', scrollPercent + '%');
         });
       }
 
-      // Mobile Menu
+      // Mobile Menu toggle function
       function initMobileMenu() {
         const menuToggle = document.getElementById('menuToggle');
         const menu = document.getElementById('menu');
@@ -1325,7 +1325,7 @@
         }
       }
 
-      // Back to Top
+      // Back to Top button functionality
       function initBackToTop() {
         const backToTopBtn = document.querySelector('.back-to-top');
 
@@ -1347,7 +1347,7 @@
         }
       }
 
-      // Smooth Scrolling
+      // Smooth Scrolling for anchor links
       function initSmoothScrolling() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
           anchor.addEventListener('click', function (e) {
@@ -1364,7 +1364,6 @@
                 behavior: 'smooth'
               });
 
-              // Close mobile menu if open
               const menu = document.getElementById('menu');
               if (menu && menu.classList.contains('active')) {
                 menu.classList.remove('active');
@@ -1374,134 +1373,200 @@
         });
       }
 
-      // Portfolio Filter
-      function initPortfolioFilter() {
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const portfolioGrids = document.querySelectorAll('.portfolio-grid');
-        const subcategoryTitles = document.querySelectorAll('.subcategory-title');
+      // --- NEW: Portfolio Modal Functionality ---
+      // Define your project data
+      const projects = {
+        'project1': {
+          title: 'Fictional Environment',
+          category: 'Environmental Design',
+          software: 'Blender',
+          images: {
+            final: 'PyramidMythic.png', // Main image for the project
+            raw: 'PyramidMythic_raw.png', // Example raw image
+            clay: 'PyramidMythic_clay.png', // Example clay image
+            wireframe: 'PyramidMythic_wireframe.png' // Example wireframe image
+          },
+          description: 'This is a fictional environment render focusing on ancient architecture and atmospheric lighting. I aimed to create a sense of mystery and grandeur. The scene was modeled entirely in Blender, with special attention to material textures and volumetric effects for the fog.'
+        },
 
-        filterBtns.forEach(btn => {
-          btn.addEventListener('click', function () {
-            // Update active button
-            filterBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
+        'project2': {
+          title: 'Sci-Fi Corridor',
+          category: 'Architectural Visualization',
+          software: 'Blender',
+          images: {
+            final: 'another_project_final.png',
+            raw: 'another_project_raw.png',
+            clay: 'another_project_clay.png',
+            wireframe: 'another_project_wireframe.png'
+          },
+          description: 'A sleek, futuristic corridor design, exploring modular asset creation and neon lighting. The goal was to achieve a high-tech, slightly dystopian feel. Rendered in Cycles with extensive use of emissive materials and metallic surfaces.'
+        }
 
-            const filterValue = this.getAttribute('data-filter');
+        // Add more projects here following the same structure
+      };
 
-            if (filterValue === 'all') {
-              subcategoryTitles.forEach(title => title.style.display = 'block');
-              portfolioGrids.forEach(grid => grid.style.display = 'grid');
-            } else {
-              subcategoryTitles.forEach(title => {
-                const sectionId = title.id.split('-')[0];
-                title.style.display = sectionId === filterValue ? 'block' : 'none';
-              });
+      function initPortfolioModal() {
+        const modal = document.getElementById('projectModal');
+        const modalContent = modal.querySelector('.modal-content');
+        const modalImage = document.getElementById('modalImage');
+        const modalDescription = document.getElementById('modalDescription');
+        const closeBtn = document.querySelector('.modal-close-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const modalTabButtons = document.querySelectorAll('.modal-tab-btn');
 
-              portfolioGrids.forEach(grid => {
-                const category = grid.getAttribute('data-category');
-                if (category) {
-                  grid.style.display = category === filterValue ? 'grid' : 'none';
+        let currentProjectData = null;
+
+        function openModal() {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            modal.classList.add('show');
+            modalContent.style.opacity = '1';
+            modalContent.style.transform = 'translateY(0)';
+        }
+
+        function closeModal() {
+            modalContent.style.opacity = '0';
+            modalContent.style.transform = 'translateY(-20px)';
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        portfolioItems.forEach(item => {
+          item.addEventListener('click', function() {
+            const projectId = this.dataset.projectId;
+            currentProjectData = projects[projectId];
+
+            if (currentProjectData) {
+              updateModalContent('final');
+              modalTabButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.tabType === 'final') {
+                  btn.classList.add('active');
                 }
               });
+              openModal();
             }
           });
         });
-      }
 
-      // Video Auto Play on Hover
-      function initVideoAutoPlay() {
-        const videos = document.querySelectorAll('.portfolio-video');
-
-        videos.forEach(video => {
-          const portfolioItem = video.closest('.portfolio-item');
-
-          portfolioItem.addEventListener('mouseenter', () => {
-            video.play().catch(e => console.log('Video play failed:', e));
-          });
-
-          portfolioItem.addEventListener('mouseleave', () => {
-            video.pause();
-            video.currentTime = 0;
-          });
-        });
-      }
-
-      // Fullscreen Modal
-      function initFullscreenModal() {
-        const modal = document.getElementById('fullscreenModal');
-        const closeBtn = modal.querySelector('.fullscreen-close');
-        const mediaContainer = modal.querySelector('.fullscreen-media-container');
-        const titleEl = modal.querySelector('.fullscreen-title');
-        const categoryEl = modal.querySelector('.fullscreen-category');
-        let scrollPosition = 0;
-
-        // Close modal function
-        function closeModal() {
-          modal.classList.remove('active');
-          document.body.classList.remove('modal-open');
-          document.body.style.top = '';
-          window.scrollTo(0, scrollPosition);
-
-          // Clean up media
-          mediaContainer.innerHTML = '';
-        }
-
-        // Event listeners
         closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', function (e) {
-          if (e.target === modal) closeModal();
-        });
 
-        document.addEventListener('keydown', function (e) {
-          if (e.key === 'Escape' && modal.classList.contains('active')) {
+        window.addEventListener('click', function(event) {
+          if (event.target === modal) {
             closeModal();
           }
         });
 
-        // Portfolio item clicks (all regular items)
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-          item.addEventListener('click', function () {
-            showFullscreen(this);
+        function updateModalContent(tabType) {
+          if (!currentProjectData) return;
+
+          modalImage.style.opacity = '0';
+          modalDescription.classList.remove('show');
+
+          setTimeout(() => {
+            if (tabType === 'description') {
+              modalDescription.textContent = currentProjectData.description;
+              modalDescription.classList.add('show');
+            } else {
+              const imageUrl = currentProjectData.images[tabType] || currentProjectData.images.final;
+              modalImage.src = imageUrl;
+              modalImage.alt = `${currentProjectData.title} - ${tabType} render`;
+              modalImage.style.opacity = '1';
+            }
+          }, 300);
+        }
+
+        modalTabButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            modalTabButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            updateModalContent(this.dataset.tabType);
           });
         });
 
-        function showFullscreen(item) {
-          scrollPosition = window.pageYOffset;
-
-          const title = item.querySelector('.portfolio-title').textContent;
-          const category = item.querySelector('.portfolio-category').textContent;
-          const img = item.querySelector('.portfolio-img');
-          const video = item.querySelector('.portfolio-video');
-
-          titleEl.textContent = title;
-          categoryEl.textContent = category;
-
-          if (img) {
-            const fullImg = document.createElement('img');
-            fullImg.src = img.src;
-            fullImg.alt = img.alt;
-            fullImg.className = 'fullscreen-media';
-            mediaContainer.appendChild(fullImg);
-          } else if (video) {
-            const fullVideo = document.createElement('video');
-            const videoSrc = video.querySelector('source');
-            if (videoSrc) {
-              fullVideo.src = videoSrc.src;
-              fullVideo.className = 'fullscreen-media';
-              fullVideo.controls = true;
-              fullVideo.autoplay = true;
-              fullVideo.loop = true;
-              mediaContainer.appendChild(fullVideo);
-            }
-          }
-
-          // Show modal
-          document.body.style.top = `-${scrollPosition}px`;
-          document.body.classList.add('modal-open');
-          modal.classList.add('active');
+        // Preload images for smoother transitions
+        function preloadProjectImages(projectData) {
+          if (!projectData?.images) return;
+          Object.values(projectData.images).forEach(url => {
+            const img = new Image();
+            img.src = url;
+          });
         }
+
+        // Preload all project images
+        Object.values(projects).forEach(preloadProjectImages);
+      }
+
+      // Add to your existing JavaScript
+      function initScrollAnimations() {
+        const elements = document.querySelectorAll('.portfolio-item, .section-title, .about-container');
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.animation = 'scaleIn 0.6s ease forwards';
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+
+        elements.forEach(element => {
+          observer.observe(element);
+          element.style.opacity = '0';
+        });
+      }
+
+      function initPortfolioIntro() {
+        const intro = document.querySelector('.portfolio-intro');
+        const video = document.querySelector('.intro-video');
+        const heroTitle = document.querySelector('.hero h1');
+        const body = document.body;
+
+        // Lock scrolling
+        body.style.overflow = 'hidden';
+        heroTitle.style.opacity = '0';
+
+        let animationStarted = false;
+
+        function startAnimation() {
+            if (animationStarted) return;
+            animationStarted = true;
+            
+            // Start zoom animation near end of video
+            setTimeout(() => {
+                video.classList.add('to-text');
+                heroTitle.style.opacity = '1';
+                
+                // Hold for 4 seconds
+                setTimeout(() => {
+                    // Fade out intro
+                    intro.style.opacity = '0';
+                    
+                    // Cleanup
+                    setTimeout(() => {
+                        intro.remove();
+                        body.style.overflow = '';
+                    }, 1000);
+                }, 4000);
+            }, (video.duration * 1000) - 1500);
+        }
+
+        // Handle video events
+        video.addEventListener('loadedmetadata', () => {
+            video.play();
+        });
+
+        video.addEventListener('play', () => {
+            startAnimation();
+        });
+
+        // Fallback in case video doesn't trigger events
+        setTimeout(startAnimation, 1000);
       }
     </script>
 </body>
-
 </html>
