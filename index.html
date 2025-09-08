@@ -29,42 +29,6 @@
       /* Prevents horizontal scrollbar from off-screen elements */
     }
 
-    /* --- Hero Section Animations --- */
-    /* Text outline for a strong, readable hero title */
-    .text-outline {
-      text-shadow:
-        -1px -1px 0 #000000,
-        1px -1px 0 #000000,
-        -1px 1px 0 #000000,
-        1px 1px 0 #000000;
-    }
-
-    /* Bubbly animation for the hero text, making it feel dynamic */
-    .bubbly-text-animation {
-      animation: bubblyText 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
-      opacity: 0;
-      /* Starts invisible */
-      transform: scale(0.8) translateY(20px);
-      /* Starts smaller and lower */
-    }
-
-    /* Sets specific animation delays for a staggered effect */
-    #hero-title {
-      animation-delay: 0.2s;
-    }
-
-    #hero-subtitle {
-      animation-delay: 0.4s;
-    }
-
-    /* Keyframes for the bubbly hero text animation */
-    @keyframes bubblyText {
-      to {
-        transform: scale(1) translateY(0);
-        opacity: 1;
-      }
-    }
-
     /* --- Scroll-based Animations for Portfolio Items and Sections --- */
     /* Base style for elements that will animate on scroll */
     .animate-on-scroll {
@@ -92,6 +56,82 @@
     .portfolio-item {
       will-change: transform, opacity;
     }
+
+    /* Custom classes for easier HTML readability */
+    .nav-link {
+      font-weight: bold;
+      color: #d1d5db; /* gray-300 */
+      transition-property: all;
+      transition-duration: 300ms;
+    }
+
+    .nav-link:hover {
+      color: #f59e0b; /* amber-500 */
+      transform: scale(1.05);
+    }
+
+    .about-box {
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-2xl */
+      background-color: #171717; /* neutral-900 */
+      border: 1px solid #262626; /* neutral-800 */
+    }
+
+    .contact-box {
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-2xl */
+      background-color: #171717; /* neutral-900 */
+      border: 1px solid #262626; /* neutral-800 */
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 0.375rem;
+      background-color: #262626; /* neutral-800 */
+      border: 1px solid #404040; /* neutral-700 */
+      color: #ffffff;
+      transition-property: all;
+      transition-duration: 300ms;
+    }
+
+    .input-field::placeholder {
+      color: #6b7280; /* gray-500 */
+    }
+
+    .input-field:focus {
+      outline: 2px solid #f59e0b; /* amber-500 */
+    }
+
+    .form-btn {
+      width: 100%;
+      background-color: #f59e0b; /* amber-500 */
+      color: #171717; /* neutral-900 */
+      font-weight: bold;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      border-radius: 9999px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+      transition-property: all;
+      transition-duration: 300ms;
+    }
+
+    .form-btn:hover {
+      background-color: #f59e0b; /* amber-600 */
+      transform: scale(1.05);
+    }
+
+    .tab-button {
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      color: #ffffff;
+      transition-property: colors;
+      transition-duration: 300ms;
+    }
   </style>
 </head>
 
@@ -101,38 +141,33 @@
 
     <header class="flex flex-col sm:flex-row justify-between items-center py-6">
       <nav class="mt-4 sm:mt-0">
-        <a href="#portfolio"
-          class="text-lg font-bold text-gray-300 hover:text-amber-500 hover:scale-105 transition-all duration-300 mr-6">Portfolio</a>
-        <a href="#about"
-          class="text-lg font-bold text-gray-300 hover:text-amber-500 hover:scale-105 transition-all duration-300 mr-6">About</a>
-        <a href="#contact"
-          class="text-lg font-bold text-gray-300 hover:text-amber-500 hover:scale-105 transition-all duration-300 mr-6">Contact</a>
-        <a href="#vision-goals"
-          class="text-lg font-bold text-gray-300 hover:text-amber-500 hover:scale-105 transition-all duration-300">Vision</a>
+        <a href="#portfolio" class="nav-link mr-6">Portfolio</a>
+        <a href="#about" class="nav-link mr-6">About</a>
+        <a href="#contact" class="nav-link mr-6">Contact</a>
+        <a href="#vision-goals" class="nav-link">Vision</a>
       </nav>
     </header>
 
     <section class="min-h-[80vh] flex flex-col justify-center items-center text-center">
       <h1 id="hero-title"
-        class="bubbly-text-animation text-6xl md:text-8xl font-extrabold tracking-tighter leading-tight text-amber-500 text-outline">
+        class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-tight text-amber-500">
         Kai
       </h1>
-      <p id="hero-subtitle" class="mt-6 text-xl md:text-2xl font-medium text-gray-400 max-w-2xl bubbly-text-animation">
+      <p id="hero-subtitle" class="mt-6 text-xl md:text-2xl font-medium text-gray-400 max-w-2xl">
         3d environment artist
       </p>
     </section>
 
     <section id="about" class="mt-16 py-10 flex flex-col items-center justify-center gap-10">
-      <div
-        class="animate-on-scroll about-container p-8 rounded-2xl shadow-2xl bg-neutral-900 border border-neutral-800 w-full md:w-2/3">
+      <div class="animate-on-scroll about-box w-full md:w-2/3">
         <h2 class="section-title text-4xl font-bold text-center mb-6">About Me</h2>
         <div class="flex justify-center mb-6">
           <button data-tab="bio"
-            class="tab-button active px-4 py-2 rounded-full text-white bg-amber-500 mx-2 transition-colors duration-300">Bio</button>
+            class="tab-button active text-white bg-amber-500 mx-2 hover:bg-amber-500">Bio</button>
           <button data-tab="tools"
-            class="tab-button px-4 py-2 rounded-full text-white bg-neutral-800 hover:bg-amber-500 mx-2 transition-colors duration-300">Tools</button>
+            class="tab-button text-white bg-neutral-800 mx-2 hover:bg-amber-500">Tools</button>
           <button data-tab="philosophy"
-            class="tab-button px-4 py-2 rounded-full text-white bg-neutral-800 hover:bg-amber-500 mx-2 transition-colors duration-300">Philosophy</button>
+            class="tab-button text-white bg-neutral-800 mx-2 hover:bg-amber-500">Philosophy</button>
         </div>
         <div id="bio-tab" class="tab-content text-gray-300 text-lg leading-relaxed active">
           <p>
@@ -173,7 +208,7 @@
       <h2 class="animate-on-scroll section-title text-5xl font-bold text-center mb-16">
         Recent Works
       </h2>
-      <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div id="portfolio-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
       </div>
     </section>
 
@@ -196,23 +231,19 @@
 
   <section id="contact" class="mt-16 py-10 text-center">
     <h2 class="animate-on-scroll section-title text-4xl font-bold mb-8">Get in Touch</h2>
-    <div
-      class="animate-on-scroll contact-container p-8 rounded-2xl shadow-2xl bg-neutral-900 border border-neutral-800 inline-block">
+    <div class="animate-on-scroll contact-box inline-block">
       <p class="text-gray-300 text-lg mb-6 max-w-2xl">
         Feel free to reach out to discuss potential projects or just to say hello.
       </p>
       <form id="contact-form" action="https://api.web3forms.com/submit" method="POST"
         class="flex flex-col items-center max-w-xl mx-auto space-y-4">
         <input type="hidden" name="access_key" value="8115828f-2c83-4277-9d3e-d70af0bd8349">
-        <input type="text" id="name" name="name" placeholder="Your Name" required
-          class="w-full p-3 rounded-md bg-neutral-800 border border-neutral-700 text-white placeholder-gray-500 focus:ring-2 focus:ring-amber-500 focus:outline-none">
-        <input type="email" id="email" name="email" placeholder="Your Email" required
-          class="w-full p-3 rounded-md bg-neutral-800 border border-neutral-700 text-white placeholder-gray-500 focus:ring-2 focus:ring-amber-500 focus:outline-none">
+        <input type="text" id="name" name="name" placeholder="Your Name" required class="input-field">
+        <input type="email" id="email" name="email" placeholder="Your Email" required class="input-field">
         <textarea id="message" name="message" placeholder="Your Message" required rows="5"
-          class="w-full p-3 rounded-md bg-neutral-800 border border-neutral-700 text-white placeholder-gray-500 focus:ring-2 focus:ring-amber-500 focus:outline-none"></textarea>
+          class="input-field"></textarea>
         <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-        <button type="submit"
-          class="w-full bg-amber-500 text-neutral-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-amber-600 transition-colors duration-300 transform hover:scale-105">
+        <button type="submit" class="form-btn">
           Send Message
         </button>
       </form>
@@ -241,10 +272,10 @@
 
   <script>
     // A comprehensive list of project data, including titles, thumbnails, and detailed content for the modal.
-    const projects = {
+    const portfolioData = {
       'project-1': {
         title: 'A Cyberpunk Alley',
-        thumbnail: 'https://placehold.co/1280x720/1e293b/d1d5db?text=Cyberpunk+Alley+Thumbnail',
+        thumbnail: 'https://placehold.co/1280x720/1e293b/d1d5db',
         content: [
           { type: 'image', src: 'https://placehold.co/1280x720/1e293b/d1d5db?text=Cyberpunk+Alley+-+Main+Render', caption: 'Final render of the cyberpunk alley scene.' },
           { type: 'text', content: '<h3 class="text-2xl font-bold mb-2">Project Overview</h3><p class="text-gray-300">This piece explores the contrast between high-tech infrastructure and urban decay. My focus was on creating a moody atmosphere with advanced lighting techniques and intricate asset design. The scene features a high level of detail, from the rusted metal textures to the neon signs flickering in the rain.</p>' },
@@ -254,7 +285,7 @@
       },
       'project-2': {
         title: 'Motion FX - Liquid Simulation',
-        thumbnail: 'https://placehold.co/1280x720/312e81/e0e7ff?text=Liquid+FX+Thumbnail',
+        thumbnail: 'https://placehold.co/1280x720/312e81/e0e7ff',
         content: [
           { type: 'image', src: 'https://placehold.co/1280x720/312e81/e0e7ff?text=Liquid+FX+-+Still+Frame', caption: 'A still frame from the procedural liquid simulation.' },
           { type: 'text', content: '<h3 class="text-2xl font-bold mb-2">Project Overview</h3><p class="text-gray-300">This project demonstrates my proficiency in fluid physics and material rendering for motion graphics. I aimed to create a dynamic, flowing substance with a vibrant, otherworldly feel. The fluid moves in a mesmerizing loop, showcasing complex refraction and reflection properties.</p>' },
@@ -263,22 +294,45 @@
       },
       'project-3': {
         title: 'Product Render - Modern Speaker',
-        thumbnail: 'https://placehold.co/1280x720/4c4c4c/ffffff?text=Product+Render+Thumbnail',
+        thumbnail: 'https://placehold.co/1280x720/4c4c4c/ffffff',
         content: [
           { type: 'image', src: 'https://placehold.co/1280x720/4c4c4c/ffffff?text=Product+Render+-+Hero+Shot', caption: 'The main promotional render of the modern speaker.' },
           { type: 'text', content: '<h3 class="text-2xl font-bold mb-2">Project Overview</h3><p class="text-gray-300">A photorealistic product visualization of a sleek, modern speaker. The focus was on accurate material properties, crisp reflections, and soft studio lighting to create a compelling commercial-grade render.</p>' }
         ]
+      },
+      'project-4': {
+        title: 'Futuristic Vehicle Concept',
+        thumbnail: 'https://placehold.co/1280x720/1a202c/e2e8f0',
+        content: [
+          { type: 'image', src: 'https://placehold.co/1280x720/1a202c/e2e8f0?text=Futuristic+Vehicle+Concept', caption: 'A concept render of a futuristic sci-fi vehicle.' },
+          { type: 'text', content: '<p class="text-gray-300">This project focused on hard-surface modeling and creating a compelling design language for a sci-fi vehicle. The final render emphasizes clean lines and dynamic composition. I paid close attention to the small details, such as panel gaps and surface imperfections, to make the vehicle feel grounded and realistic.</p>' }
+        ]
+      },
+      'project-5': {
+        title: 'Abstract Geometric Art',
+        thumbnail: 'https://placehold.co/1280x720/333333/aaaaaa',
+        content: [
+          { type: 'image', src: 'https://placehold.co/1280x720/333333/aaaaaa?text=Abstract+Geometric+Art', caption: 'An abstract piece exploring complex geometric shapes and lighting.' },
+          { type: 'text', content: '<p class="text-gray-300">An experiment in abstract art using complex procedural geometry and unique lighting techniques to create a visually striking and thought-provoking image.</p>' }
+        ]
+      },
+      'project-6': {
+        title: 'Forest Path Environment',
+        thumbnail: 'https://placehold.co/1280x720/223322/eefeee',
+        content: [
+          { type: 'image', src: 'https://placehold.co/1280x720/223322/eefeee?text=Forest+Path+Environment', caption: 'A lush, photorealistic forest path environment.' },
+          { type: 'text', content: '<h3 class="text-2xl font-bold mb-2">Project Overview</h3><p class="text-gray-300">This project was a study in creating a photorealistic natural environment. I focused on using high-resolution textures and realistic lighting to capture a tranquil forest scene. The goal was to make the viewer feel like they could step right into the scene.</p>' }
+        ]
       }
-
     };
 
     document.addEventListener('DOMContentLoaded', () => {
       // Grabbing DOM elements for manipulation
-      const portfolioGrid = document.getElementById('portfolio-grid');
+      const portfolioContainer = document.getElementById('portfolio-container');
       const modal = document.getElementById('modal');
-      const closeModalButton = document.getElementById('close-modal');
+      const closeModalBtn = document.getElementById('close-modal');
       const modalContent = document.getElementById('modal-content');
-      const contactForm = document.getElementById('contact-form');
+      const contactFormElement = document.getElementById('contact-form');
       const formMessage = document.getElementById('form-message');
 
       // Smooth scrolling for navigation links
@@ -293,32 +347,29 @@
 
       // Function to render portfolio items with alternating slide-in animations
       function renderPortfolio() {
-        portfolioGrid.innerHTML = ''; // Clear the grid first
-        const projectKeys = Object.keys(projects);
+        portfolioContainer.innerHTML = ''; // Clear the grid first
+        const projectKeys = Object.keys(portfolioData);
         projectKeys.forEach((id, index) => {
-          const item = projects[id];
+          const item = portfolioData[id];
           // Alternate the starting animation direction for each card
           // If the index is even (0, 2, 4...), the card slides from the left
           // If the index is odd (1, 3, 5...), the card slides from the right
           const directionClass = index % 2 === 0 ? 'slide-from-left' : 'slide-from-right';
           const itemHtml = `
           <div class="animate-on-scroll portfolio-item relative rounded-2xl overflow-hidden shadow-lg cursor-pointer transform ${directionClass} w-full group hover:scale-105 transition-all duration-300">
-            <div class="relative w-full pt-[56.25%] aspect-ratio-wrapper" data-id="${id}">
+            <div class="relative w-full pt-[56.25%]" data-id="${id}">
               <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="${item.thumbnail}" alt="${item.title}" onerror="this.src='https://placehold.co/1280x720/1e293b/d1d5db?text=Image+Not+Found';">
               <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
-              <div class="absolute inset-x-0 bottom-0 p-6">
-                <p class="font-bold text-xl leading-tight text-white group-hover:text-amber-400 transition-colors duration-300">${item.title}</p>
-              </div>
             </div>
           </div>
         `;
-          portfolioGrid.insertAdjacentHTML('beforeend', itemHtml);
+          portfolioContainer.insertAdjacentHTML('beforeend', itemHtml);
         });
       }
 
       // Function to handle modal opening and content injection
       function openModal(id) {
-        const project = projects[id];
+        const project = portfolioData[id];
         if (project) {
           // Clear previous content and add the project title
           modalContent.innerHTML = `<h2 class="text-4xl font-bold mb-6">${project.title}</h2>`;
@@ -355,14 +406,14 @@
       }
 
       // Event listener for the portfolio grid to open the modal
-      portfolioGrid.addEventListener('click', (event) => {
+      portfolioContainer.addEventListener('click', (event) => {
         const item = event.target.closest('[data-id]');
         if (item) {
           openModal(item.dataset.id);
         }
       });
 
-      closeModalButton.addEventListener('click', closeModal);
+      closeModalBtn.addEventListener('click', closeModal);
       modal.addEventListener('click', (e) => {
         // Close the modal when clicking outside the content area
         if (e.target === modal) {
@@ -388,7 +439,7 @@
       });
 
       // Simple form validation and submission for the contact form
-      contactForm.addEventListener('submit', async function (e) {
+      contactFormElement.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         const name = document.getElementById('name').value.trim();
@@ -418,7 +469,7 @@
           if (response.ok) {
             formMessage.textContent = 'Message sent successfully!';
             formMessage.className = 'mt-4 text-sm text-center text-green-500';
-            contactForm.reset(); // Clear the form on success
+            contactFormElement.reset(); // Clear the form on success
           } else {
             formMessage.textContent = result.message || 'Something went wrong. Please try again.';
             formMessage.className = 'mt-4 text-sm text-center text-red-500';
