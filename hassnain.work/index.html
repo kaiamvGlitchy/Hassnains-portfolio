@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kai's 3D Portfolio</title>
+  <meta name="description"
+    content="Professional 3D artist specializing in environmental design, motion graphics, and product renders.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /*
+      * Custom CSS for a professional, dark-themed portfolio.
+      * Includes animations and responsive design elements.
+      */
+
+    /* --- General Body and Typography --- */
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom, #0d0d0d, #000000);
+      background-attachment: fixed;
+      color: #ffffff;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      /* Prevents horizontal scrollbar from off-screen elements */
+    }
+
+    /* --- Scroll-based Animations for Portfolio Items and Sections --- */
+    /* Base style for elements that will animate on scroll */
+    .animate-on-scroll {
+      opacity: 0;
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    /* Starting position for elements sliding from the left, completely off-screen */
+    .slide-from-left {
+      transform: translateX(-100vw);
+    }
+
+    /* Starting position for elements sliding from the right, completely off-screen */
+    .slide-from-right {
+      transform: translateX(100vw);
+    }
+
+    /* The final, visible state for animated elements, moving into their original position */
+    .is-visible {
+      opacity: 1;
+      transform: translateX(0) !important;
+    }
+
+    /* Ensure portfolio items have proper positioning */
+    .portfolio-item {
+      will-change: transform, opacity;
+    }
+
+    /* Custom classes for easier HTML readability */
+    .nav-link {
+      font-weight: bold;
+      color: #d1d5db;
+      /* gray-300 */
+      transition-property: all;
+      transition-duration: 300ms;
+    }
+
+    .nav-link:hover {
+      color: #f59e0b;
+      /* amber-500 */
+      transform: scale(1.05);
+    }
+
+    .about-box {
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      /* shadow-2xl */
+      background-color: #171717;
+      /* neutral-900 */
+      border: 1px solid #262626;
+      /* neutral-800 */
+    }
+
+    .contact-box {
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      /* shadow-2xl */
+      background-color: #171717;
+      /* neutral-900 */
+      border: 1px solid #262626;
+      /* neutral-800 */
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 0.375rem;
+      background-color: #262626;
+      /* neutral-800 */
+      border: 1px solid #404040;
+      /* neutral-700 */
+      color: #ffffff;
+      transition-property: all;
+      transition-duration: 300ms;
+    }
+
+    .input-field::placeholder {
+      color: #6b7280;
+      /* gray-500 */
+    }
+
+    .input-field:focus {
+      outline: 2px solid #f59e0b;
+      /* amber-500 */
+    }
+
+    .form-btn {
+      width: 100%;
+      background-color: #f59e0b;
+      /* amber-500 */
+      color: #171717;
+      /* neutral-900 */
+      font-weight: bold;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      border-radius: 9999px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      /* shadow-lg */
+      transition-property: all;
+      transition-duration: 300ms;
+    }
+
+    .form-btn:hover {
+      background-color: #f59e0b;
+      /* amber-600 */
+      transform: scale(1.05);
+    }
+
+    .tab-button {
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      color: #ffffff;
+      transition-property: colors;
+      transition-duration: 300ms;
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+  <header class="text-center text-sm text-gray-500 py-8 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <a href="#portfolio" class="nav-link text-gray-400 hover:text-amber-500 transition-colors mx-2">Portfolio</a>
+        <a href="#about" class="nav-link text-gray-400 hover:text-amber-500 transition-colors mx-2">About</a>
+        <a href="#contact" class="nav-link text-gray-400 hover:text-amber-500 transition-colors mx-2">Contact</a>
+        <a href="#vision-goals" class="nav-link text-gray-400 hover:text-amber-500 transition-colors mx-2">Vision</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+    <section class="min-h-[80vh] flex flex-col justify-center items-center text-center">
+      <h1 id="hero-title" class="text-6xl md:text-9xl font-extrabold tracking-tighter leading-none text-amber-500">
+        KAI
+      </h1>
+      <p id="hero-subtitle" class="mt-4 text-lg font-light text-gray-400">
+        HASSNAIN | 3D Artist & Visual Storyteller
+      </p>
+    </section>
+
+    <section id="about" class="mt-16 py-10 flex flex-col items-center justify-center gap-10">
+      <div class="animate-on-scroll about-box w-full md:w-2/3">
+        <h2 class="section-title text-4xl font-bold text-center mb-6">About Me</h2>
+        <div class="flex justify-center mb-6">
+          <button data-tab="bio"
+            class="tab-button active text-white bg-amber-500 mx-2 hover:bg-amber-500">Bio</button>
+          <button data-tab="tools"
+            class="tab-button text-white bg-neutral-800 mx-2 hover:bg-amber-500">Tools</button>
+          <button data-tab="philosophy"
+            class="tab-button text-white bg-neutral-800 mx-2 hover:bg-amber-500">Philosophy</button>
+        </div>
+        <div id="bio-tab" class="tab-content text-gray-300 text-lg leading-relaxed active">
+          <p>
+            Hey there, I'm Kai also known as Hassnain, im a begginer 3d artist, i started blender around 6 months ago, im
+            still learning and exploring the vast world of 3d art, i will share my journey and progress here.
+          </p>
+          <p class="mt-4">
+            I believe a great render should tell a story, not just showcase technical skills and I'm always looking for
+            new ways to tell them. I'm always eager
+            to collaborate on new projects, so if you have a creative vision you'd like to bring to life, don't hesitate
+            to reach out!
+          </p>
+        </div>
+        <div id="tools-tab" class="tab-content text-gray-300 text-lg leading-relaxed hidden">
+          <p>My core workflow is built around the industry-standard software below, but I'm always learning and
+            experimenting with new tools to improve my craft and efficiency.</p>
+          <ul class="list-disc list-inside mt-4 space-y-2">
+            <li><strong class="text-amber-500">3D Modeling:</strong> Blender, Maya, ZBrush</li>
+            <li><strong class="text-amber-500">Texturing:</strong> Substance Painter, Substance Designer</li>
+            <li><strong class="text-amber-500">Rendering:</strong> Cycles, Eevee, Arnold, V-Ray</li>
+            <li><strong class="text-amber-500">Post-Production:</strong> Adobe Photoshop, After Effects, DaVinci Resolve
+            </li>
+          </ul>
+        </div>
+        <div id="philosophy-tab" class="tab-content text-gray-300 text-lg leading-relaxed hidden">
+          <p>My artistic philosophy is centered on the idea that every piece should have a purpose. Whether it's to
+            evoke a specific emotion, tell a story, or simply highlight a product's elegance, the intent behind the art
+            is what makes it powerful.</p>
+          <p class="mt-4">I strive for a balance between technical precision and creative expression, ensuring that the
+            final output is not only beautiful but also technically sound and efficient. My goal is to create work that
+            inspires and captivates, pushing the boundaries of what's possible in the digital realm.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="mt-16 py-10">
+      <h2 class="animate-on-scroll section-title text-5xl font-bold text-center mb-16">
+        Recent Works
+      </h2>
+      <div id="portfolio-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      </div>
+    </section>
+
+    <section id="vision-goals" class="mt-16 py-10 flex flex-col items-center justify-center gap-10">
+      <div
+        class="animate-on-scroll vision-goals-container p-8 rounded-2xl shadow-2xl bg-neutral-900 border border-neutral-800 w-full md:w-2/3">
+        <h2 class="section-title text-4xl font-bold text-center mb-6">Vision & Goals</h2>
+        <ul class="text-gray-300 text-lg leading-relaxed list-disc list-inside space-y-4">
+          <li>To continue pushing the boundaries of my skills in procedural modeling and visual scripting.</li>
+          <li>To collaborate with a creative studio on a game or animated short film.</li>
+          <li>To explore new rendering engines and techniques, such as real-time rendering in Unreal Engine 5.</li>
+          <li>To share my knowledge with the community through tutorials and behind-the-scenes breakdowns of my work.
+          </li>
+          <li>To create a signature art style that is both recognizable and inspiring.</li>
+          <li>To mentor aspiring 3D artists and help them navigate their creative journeys.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <section id="contact" class="mt-16 py-10 text-center">
+    <h2 class="animate-on-scroll section-title text-4xl font-bold mb-8">Get in Touch</h2>
+    <div class="animate-on-scroll contact-box inline-block">
+      <p class="text-gray-300 text-lg mb-6 max-w-2xl">
+        Feel free to reach out to discuss potential projects or just to say hello.
+      </p>
+      <form id="contact-form" action="https://api.web3forms.com/submit" method="POST"
+        class="flex flex-col items-center max-w-xl mx-auto space-y-4">
+        <input type="hidden" name="access_key" value="8115828f-2c83-4277-9d3e-d70af0bd8349">
+        <input type="text" id="name" name="name" placeholder="Your Name" required class="input-field">
+        <input type="email" id="email" name="email" placeholder="Your Email" required class="input-field">
+        <textarea id="message" name="message" placeholder="Your Message" required rows="5"
+          class="input-field"></textarea>
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+        <button type="submit" class="form-btn">
+          Send Message
+        </button>
+      </form>
+      <div id="form-message" class="mt-4 text-sm text-center"></div>
+    </div>
+  </section>
+
+  <footer class="text-center text-sm text-gray-500 py-8 mt-16 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+        <p>&copy; 2024 Kai. All Rights Reserved.</p>
+        <div class="flex space-x-6 text-xl">
+          <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"
+            class="text-gray-400 hover:text-amber-500 transition-colors">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://twitter.com" target="_blank" aria-label="Twitter"
+            class="text-gray-400 hover:text-amber-500 transition-colors">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://artstation.com" target="_blank" aria-label="ArtStation"
+            class="text-gray-400 hover:text-amber-500 transition-colors">
+            <i class="fab fa-artstation"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center p-4 z-50">
+    <div class="relative bg-neutral-900 w-full max-w-4xl max-h-[95vh] rounded-2xl shadow-2xl flex flex-col">
+      <button id="close-modal"
+        class="absolute top-4 right-4 text-gray-400 hover:text-gray-200 transition-colors z-50 p-2 rounded-full bg-neutral-800 hover:bg-neutral-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <div id="modal-content-container" class="p-8 w-full overflow-y-auto">
+        <div id="modal-content" class="w-full">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // A comprehensive list of project data, including titles, thumbnails, and detailed content for the modal.
+    const portfolioData = {
+      'project-1': {
+        title: 'The Magical Well',
+        thumbnail: 'Thewell/Final.jpg',
+        content: [
+          { type: 'image', src: 'Thewell/Final.jpg', caption: 'Final render of the scene.' },
+          {
+            type: 'text', content: '<h3 class="text-2xl font-bold mb-2">Project Overview</h3><p class="text-gray-300">This piece represents a mystical environment built around a magical well. The goal was to capture a sense of wonder and fantasy using atmospheric lighting, natural elements, and a strong focus on mood. The well serves as the centerpiece, surrounded by organic details that enhance its enchanted aura.</p>'
+          },
+          {
+            type: 'text', content: '<h3 class="text-2xl font-bold mb-2">Technical Breakdown</h3><p class="text-gray-300">I used Blender for modeling and Cycles for rendering. The textures were created procedurally, and All assets were modelled by me, post-processing was done in Blender and Photoshop to enhance colors and lighting.</p>'
+          },
+          { type: 'image', src: 'Thewell/Raw.jpg', caption: 'Render Without Compositing' },
+          { type: 'image', src: 'Thewell/Clay.jpg', caption: 'Clay render showing geometry without materials' },
+          { type: 'image', src: 'Thewell/Wireframe.jpg', caption: 'Wireframe render to show topology' }
+        ]
+      },
+
+      'project-2': {
+        title: 'The Man Who Waited',
+        thumbnail: 'Hewaited/Final.jpg',
+        content: [
+          { type: 'image', src: 'Hewaited/Final.jpg', caption: 'Final render of the scene.' },
+          {
+            type: 'text', content: '<h3 class="text-2xl font-bold mb-2">Project Overview</h3><p class="text-gray-300">This piece represents the struggles of life.. and a man who waited for someone who never came.</p>'
+          },
+          {
+            type: 'text', content: '<h3 class="text-2xl font-bold mb-2">Technical Breakdown</h3><p class="text-gray-300">I used Blender for modeling and Cycles for rendering,All assets were modelled by me except the soda cans which i got from sketchfab also The textures were created procedurally,and some were textures from blenderkit and post-processing was done in Blender to enhance colors and lighting.</p>'
+          },
+          { type: 'image', src: 'Hewaited/Raw.jpg', caption: 'Render Without Compositing' },
+          { type: 'image', src: 'Hewaited/Clay.jpg', caption: 'Clay render showing geometry without materials' },
+          { type: 'image', src: 'Hewaited/Wireframe.jpg', caption: 'Wireframe render to show topology' }
+        ]
+      }
+
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Grabbing DOM elements for manipulation
+      const portfolioContainer = document.getElementById('portfolio-container');
+      const modal = document.getElementById('modal');
+      const closeModalBtn = document.getElementById('close-modal');
+      const modalContent = document.getElementById('modal-content');
+      const contactFormElement = document.getElementById('contact-form');
+      const formMessage = document.getElementById('form-message');
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+
+      // Function to render portfolio items with alternating slide-in animations
+      function renderPortfolio() {
+        portfolioContainer.innerHTML = ''; // Clear the grid first
+        const projectKeys = Object.keys(portfolioData);
+        projectKeys.forEach((id, index) => {
+          const item = portfolioData[id];
+          // Alternate the starting animation direction for each card
+          // If the index is even (0, 2, 4...), the card slides from the left
+          // If the index is odd (1, 3, 5...), the card slides from the right
+          const directionClass = index % 2 === 0 ? 'slide-from-left' : 'slide-from-right';
+          const itemHtml = `
+          <div class="animate-on-scroll portfolio-item relative rounded-2xl overflow-hidden shadow-lg cursor-pointer transform ${directionClass} w-full group hover:scale-105 transition-all duration-300">
+            <div class="relative w-full pt-[56.25%]" data-id="${id}">
+              <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="${item.thumbnail}" alt="${item.title}" onerror="this.src='https://placehold.co/1280x720/1e293b/d1d5db?text=Image+Not+Found';">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+            </div>
+          </div>
+        `;
+          portfolioContainer.insertAdjacentHTML('beforeend', itemHtml);
+        });
+      }
+
+      // Function to handle modal opening and content injection
+      function openModal(id) {
+        const project = portfolioData[id];
+        if (project) {
+          // Clear previous content and add the project title
+          modalContent.innerHTML = `<h2 class="text-4xl font-bold mb-6">${project.title}</h2>`;
+
+          // Loop through the project content and create elements
+          project.content.forEach(item => {
+            if (item.type === 'image') {
+              const imgDiv = document.createElement('div');
+              imgDiv.className = 'mb-6';
+              imgDiv.innerHTML = `<img src="${item.src}" alt="${item.caption}" class="w-full rounded-lg shadow-lg" onerror="this.src='https://placehold.co/1280x720/1e293b/d1d5db?text=Image+Not+Found';">
+                                <p class="text-sm text-gray-500 text-center mt-2">${item.caption}</p>`;
+              modalContent.appendChild(imgDiv);
+            } else if (item.type === 'text') {
+              const textDiv = document.createElement('div');
+              textDiv.className = 'mb-6';
+              textDiv.innerHTML = item.content;
+              modalContent.appendChild(textDiv);
+            }
+          });
+
+          // Show the modal and prevent body scrolling
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      // Function to handle modal closing
+      function closeModal() {
+        // Hide the modal and restore body scrolling
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+
+      // Event listener for the portfolio grid to open the modal
+      portfolioContainer.addEventListener('click', (event) => {
+        const item = event.target.closest('[data-id]');
+        if (item) {
+          openModal(item.dataset.id);
+        }
+      });
+
+      closeModalBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        // Close the modal when clicking outside the content area
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // About section tab functionality
+      document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', function () {
+          // Remove active state from all buttons and add to the clicked one
+          document.querySelectorAll('.tab-button').forEach(btn => {
+            btn.classList.remove('bg-amber-500');
+            btn.classList.add('bg-neutral-800');
+          });
+          // Hide all tab content and show the active one
+          document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+
+          this.classList.add('bg-amber-500');
+          this.classList.remove('bg-neutral-800');
+          document.getElementById(this.dataset.tab + '-tab').classList.remove('hidden');
+        });
+      });
+
+      // Simple form validation and submission for the contact form
+      contactFormElement.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        // Basic validation checks
+        if (name === '' || email === '' || message === '') {
+          formMessage.textContent = 'Please fill out all fields.';
+          formMessage.className = 'mt-4 text-sm text-center text-red-500';
+          return;
+        }
+
+        // Use the FormData API to handle form data submission
+        const formData = new FormData(this);
+
+        try {
+          const response = await fetch(this.action, {
+            method: this.method,
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          const result = await response.json();
+          if (response.ok) {
+            formMessage.textContent = 'Message sent successfully!';
+            formMessage.className = 'mt-4 text-sm text-center text-green-500';
+            contactFormElement.reset(); // Clear the form on success
+          } else {
+            formMessage.textContent = result.message || 'Something went wrong. Please try again.';
+            formMessage.className = 'mt-4 text-sm text-center text-red-500';
+          }
+        } catch (error) {
+          formMessage.textContent = 'Network error. Please try again.';
+          formMessage.className = 'mt-4 text-sm text-center text-red-500';
+        }
+      });
+
+      // --- Simple Intersection Observer for Scroll Animations ---
+      // This observer will trigger animations when elements enter the viewport during scroll
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Add the 'is-visible' class to trigger the CSS transition
+            entry.target.classList.add('is-visible');
+            // Stop observing the element once it has animated to prevent re-triggering
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.2, // Trigger when 20% of the element is visible
+        rootMargin: '0px 0px -50px 0px' // Trigger slightly before element comes into full view
+      });
+
+      // Function to initialize the scroll-based animations
+      function initAnimations() {
+        // Start observing all elements that should animate on scroll
+        setTimeout(() => {
+          document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+          });
+        }, 200); // Give time for portfolio rendering
+      }
+
+      // Initial function calls to render the portfolio and set up animations
+      renderPortfolio();
+      initAnimations();
+    });
+  </script>
+
+</body>
+
+</html>
